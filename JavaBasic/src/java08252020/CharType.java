@@ -1,10 +1,11 @@
+package java08252020;
 
 public class CharType {
 
 	public static void main(String[] args) {
 		char c1 = 'a';
 		char c2 = '\u0061'; // Unicode
-		char ch = '차';
+		char ch = '가';
 		
 		System.out.println(c1);
 		System.out.println(c2);
