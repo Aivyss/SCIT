@@ -35,7 +35,6 @@ public class Bmi {
 
         // Process
         height = height*0.01;
-        System.out.println(height);
         bmi = weight / (height*height);
         
         System.out.println(bmi);
