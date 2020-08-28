@@ -6,8 +6,6 @@
 
     비만여부 판단기준
     - 고도 비만 : 40 이상
-    - 중등도 비만 (2단계 비만) : 40 미만
-    - 경도 비만 (1단계 비만) : 35미만
     - 과체중 : 30 미만
     - 정상 :   23 미만
     - 저체중 : 18.5 미만
@@ -36,8 +34,7 @@ public class Bmi {
         // Process
         height = height*0.01;
         bmi = weight / (height*height);
-        
-        System.out.println(bmi);
+
         if (bmi>40) grade = "고도 비만";
         else if (bmi>30) grade = "비만";
         else if (bmi>25) grade = "과체중";
