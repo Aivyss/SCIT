@@ -18,15 +18,15 @@ public class Problem2 {
 		
 		// Calculation
 		avg = (i+j+k)/3.0;
-		
-		if (avg >= 70) {
-			System.out.println("합격입니다.");
-		} else if (avg>=40) {
-			System.out.println("불합격입니다.");
-		} else
-			System.out.println("과락입니다.");
-		
+		if (i<40 || j<40 || j<40) {
+			System.out.println("과락입니다");
+		} else {
+			if (avg >= 70) {
+				System.out.println("합격입니다.");
+			} else {
+				System.out.println("불합격입니다.");
+			}
+		}
 		sc.close();
 	}
-
 }
