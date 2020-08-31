@@ -6,7 +6,8 @@ package java08312020;
 
 public class ForExample1 {
 	public static void main(String[] args) {
-		// Drawwing a star 1
+		System.out.println("=====  Drawing a star 1 =====");
+		// Drawing a star 1
 		for (int i=0; i<7; i++) {
 			for (int j=0; j<i+1; j++) {
 				System.out.print("*");
@@ -15,13 +16,26 @@ public class ForExample1 {
 		}
 		
 		System.out.println();
-		System.out.println("===== Divider =====");
-		System.out.println();
+		System.out.println("===== Drawing a reverse star 2 =====");
 		
 		// Drawing a reverse star 2
 		for (int i=0; i<7; i++) {
 			for (int j=7; j>i; j--) {
 				System.out.print("*");
+			}
+			System.out.println();
+		}
+		
+		System.out.println();
+		System.out.println("===== Drawing a star 1-2 =====");
+		
+		// Drawing a star 1-2
+		for (int i=0; i<7; i++) {
+			for (int j=7; j>-1; j--) {
+				if (j<=i)
+					System.out.print("*");
+				else
+					System.out.print(" ");
 			}
 			System.out.println();
 		}
