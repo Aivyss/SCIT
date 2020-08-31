@@ -17,6 +17,8 @@ public class MultiplicationTable {
 		
 		// Output
 		mult(initial, finish);
+		
+		sc.close();
 	}
 	
 	// Multiplication method
