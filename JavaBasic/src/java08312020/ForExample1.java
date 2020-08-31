@@ -39,5 +39,21 @@ public class ForExample1 {
 			}
 			System.out.println();
 		}
+		
+		System.out.println();
+		System.out.println("===== Drawing a star 3 =====");
+		
+		// Drawing a reverse star 3
+		int size = 9;
+		for (int i=0; i<size/2; i++) {
+			for (int j=0; j<size; j++) {
+				if (j<=(size/2-1 - i) || j>=(size/2+1 + i)) {
+					System.out.print("☆");
+				} else {
+					System.out.print("★");
+				}
+			}
+			System.out.println();
+		}
 	}
 }
