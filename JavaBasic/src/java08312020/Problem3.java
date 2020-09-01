@@ -25,9 +25,8 @@ public class Problem3 {
 		case 2 : 
 			System.out.println("2. 홍어");
 			break;
-		case 3 : 
-			System.out.println("3. 실론티");
-		case 4 : 
+		case 3 : case 4:
+			System.out.println("3. 실론티"); 
 			System.out.println("4. 하와이안 피자");
 		case 5 : 
 			System.out.println("5. 솔의 눈");
