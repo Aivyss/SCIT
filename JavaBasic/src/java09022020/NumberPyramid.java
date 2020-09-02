@@ -18,6 +18,7 @@ public class NumberPyramid {
 		Scanner sc = new Scanner(System.in);
 		
 		// Input values
+		System.out.print("Input number range : ");
 		range = sc.nextInt();
 		
 		// Floor calculation
@@ -28,7 +29,7 @@ public class NumberPyramid {
 				break;
 			}
 		}
-		System.out.println(floor);
+		System.out.println("Floor =" + floor);
 		
 		// Arrange Pyramid
 		for (int i=1; i<=floor; i++) {
@@ -48,5 +49,4 @@ public class NumberPyramid {
 		}
 		sc.close();
 	}
-
 }
