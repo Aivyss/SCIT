@@ -18,29 +18,29 @@ public class WhileProblem4 {
 		Scanner sc = new Scanner(System.in);
 			
 		// Input Process --> Exit or Calculation
-		while (input1>0 && input2<=input1) {
-			// Input
+		while (true) {
+			//Input Process
 			System.out.print("두 정수의 값을 차례대로 기입하시오 : ");
 			input1 = sc.nextInt();
 			input2 = sc.nextInt();	
 			
-			// Calculation
-			for (int i=1; i<=input1; i++) {
-				if (i%input2==0) {}
-				else {
-					sum+=i;
+			// Check input values
+			if (input1<0 || input2>input1) {
+				System.out.println("잘못 입력하셨습니다.");
+				break;
+			} else {
+				// Process
+				for (int i=1; i<=input1; i++) {
+					if (i%input2==0) {}
+					else {
+						sum+=i;
+					}
 				}
+				
+				// Output and Initialization
+				System.out.println("sum = " + sum);
+				sum = 0;
 			}
-			// Output and Initialization
-			System.out.println("sum = " + sum);
-			sum = 0;
-		}
-		
-		if (input1<0 || input2>input1) {
-			System.out.println("잘못 입력하셨습니다.");
-			System.exit(0);
-		} else {
-			System.out.println("어차피 끝은 없는거야...");
 		}
 		
 		sc.close();
