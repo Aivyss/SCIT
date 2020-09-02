@@ -39,7 +39,7 @@ public class NumberPyramid {
 				}
 				else {
 					if (count>range) {
-						System.exit(0);
+						System.exit(0); 
 					}
 					System.out.print(count+"\t");
 					count++;
