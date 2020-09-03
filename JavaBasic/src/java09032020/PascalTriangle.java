@@ -1,3 +1,13 @@
+/*
+ * Pascal Triangle
+ * 
+				1					
+			1		1				
+		1		2		1			
+ 	1		3		3		1		
+1		4		6		4		1	
+ *
+ */
 package java09032020;
 
 import java.util.Scanner;
@@ -23,7 +33,7 @@ public class PascalTriangle {
 			for (int j = 0; j < (2*floor-1); j++) {
 				if ((floor-1+i) == j) {
 					pascal[i][j] = 1;
-				} else if ((floor-1-i) == j) { // i,j ==3,1
+				} else if ((floor-1-i) == j) {
 					pascal[i][j] = 1;
 				} else {
 					if (j == 0 || j == 2*floor-2) {
