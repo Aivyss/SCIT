@@ -36,7 +36,8 @@ public class Problem1 {
 
 		// Calculation 1
 		for (int i = range; i >= 1; i /= 10) {
-			test = input % i;
+			test = input / i;
+			sum += input;
 			sum += test;
 			input = input - test * i;
 		}
@@ -49,7 +50,6 @@ public class Problem1 {
 			tf = false;
 			System.out.println("하샤드 수 판별: " + tf);
 		}
-
 		sc.close();
 	}
 }
