@@ -15,6 +15,17 @@ public class BaseBallGame {
 
 		// Define random values & Multiple checking
 		Random rd = new Random();
+		// way 2
+		for (int i = 0; i < arry.length; i++) {
+			arry[i] = rd.nextInt(9);
+			for (int j = i-1; j>=0; j--) {
+				if (arry[j] == arry[i]) {
+					i--;
+					break;
+				}
+			}
+		}
+		/* way 1
 		for (int i = 0; i < arry.length; i++) {
 			arry[i] = rd.nextInt(9); // 0 ~ 9
 			for (int j = 0; j < arry.length; j++) {
@@ -27,6 +38,7 @@ public class BaseBallGame {
 				}
 			}
 		}
+		*/
 
 		// Sort Process
 		int temp = 0;
