@@ -14,9 +14,9 @@ public class Problem1 {
 				arry[i] = count;
 				System.out.println(j + " 번째의 수 : " + arry[i]);
 				j++;
+				i++;
 			}
-			i++;
-			count ++;
+			count++;
 		}
 	}
 }
