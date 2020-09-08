@@ -16,6 +16,16 @@ public class LifeGame {
 
 		// Define Array cells and initialization
 		int[][] cells = new int[scale][scale];
+		 
+		/* Methuselah example
+		scale = 30; 
+		cells [5+10][5+10] = 1;
+		cells [5+10][4+10] = 1;
+		cells [4+10][6+10] = 1;
+		cells [4+10][5+10] = 1;
+		cells [6+10][5+10] = 1;
+		*/
+		
 		for (int i = 0; i < scale; i++) {
 			for (int j = 0; j < scale; j++) {
 				cells[i][j] = rd.nextInt(2);
@@ -27,7 +37,7 @@ public class LifeGame {
 
 		// Time evolution
 		int i = 0;
-		while (i < 100) {
+		while (i < 1500) {
 			clearScreen();
 			cells = lifeGameEvolution(cells, scale);
 			print(cells, scale);
@@ -98,7 +108,7 @@ public class LifeGame {
 				if (sum <= 1 || sum >= 4) {
 					evolv[i][j] = 0;
 				} else if (sum == 2) {
-					evolv[i][j] = rd.nextInt(2);
+					evolv[i][j] = cells[i][j];
 				} else if (sum == 3) {
 					evolv[i][j] = 1;
 				}
