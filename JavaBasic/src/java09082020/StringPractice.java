@@ -1,5 +1,5 @@
 /*
- * without sc.nextLine(), input process
+ * < --- without sc.nextLine(), then input process --- >
  * num <- sc <-integer
  * sc(scanner object) <- enter
  * str3 <- sc(scanner object)
