@@ -23,7 +23,7 @@ public class Problem5 {
 		
 		// Output
 		System.out.println(str);
-		
+		System.out.println(Integer.parseInt(str));	
 		
 	} // main method end
 	
