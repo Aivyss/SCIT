@@ -12,7 +12,7 @@ public class ArrayPractice {
 			intArry2[i] = intArry1[i];
 		}
 		
-		// Output 1
+		// Output 1 intArry2 == [I@15db9742
 		System.out.print("원본 배열 : ");
 		for (int i=0; i<intArry1.length; i++) {
 			System.out.print(intArry1[i] + " ");
@@ -23,7 +23,7 @@ public class ArrayPractice {
 			System.out.print(intArry2[i] + " ");
 		}
 		
-		// Output 2 (Address reference = I@15db9742)
+		// Output 2 (Address reference, intArry1 == [I@6d06d69c, intArry3 == [I@6d06d69c)
 		System.out.println("intArry1 = " + intArry1 + ", intArry3 = " + intArry3);
 		intArry1[0] = 0;
 		System.out.println("intArry1[0] = " + intArry1[0] + ", intArry3[0] = " + intArry3[0]);
