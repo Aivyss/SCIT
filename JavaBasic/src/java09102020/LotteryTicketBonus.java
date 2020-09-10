@@ -17,7 +17,7 @@ public class LotteryTicketBonus {
 		ArrayList<Object> arrayList = new ArrayList<Object>();
 
 		// Input Process
-		System.out.print("input six numbers : ");
+		System.out.print("input six number + Bonus Number : ");
 		arrayList = input(oMR);
 		oMR = (int[]) arrayList.get(0);
 		inputBonus = (int) arrayList.get(1);
