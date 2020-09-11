@@ -39,11 +39,11 @@ public class ArrayListWay {
 		
 		// Output Process: classname.get(index);
 		outputArray = (int[][]) aLObject.get(0);
-		System.out.println(outputArray[3][3]);				// 1
-		System.out.println((int) aLObject.get(1));			// 1
-		System.out.println(aLInt.get(0));					// 2
-		System.out.println(aLDouble.get(0));				// 3
-		System.out.println(aLString.get(0));				// 4
+		System.out.println(outputArray[3][3]);			// 1
+		System.out.println((int) aLObject.get(1));		// 1
+		System.out.println(aLInt.get(0));				// 2
+		System.out.println(aLDouble.get(0));			// 3
+		System.out.println(aLString.get(0));			// 4
 		
 		// Array List size
 		System.out.println(aLObject.size());
@@ -52,5 +52,12 @@ public class ArrayListWay {
 		aLInt.set(0, integerAdd);
 		System.out.println(aLInt.get(0));
 		System.out.println(aLInt.size());
+		
+		// Remove
+		aLObject.remove(0);
+		System.out.println(aLObject.size());
+		System.out.println(aLObject.get(0));
+		
+		
 	}
 }
