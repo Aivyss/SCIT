@@ -6,6 +6,12 @@
 
 ## 1. 1. 基本的な使い方
 
+[ArrayList 使い方](SCIT%20Wiki%20478a49491fd748c58ab007925b18a5c9/ArrayList%20%E4%BD%BF%E3%81%84%E6%96%B9%205512fa6bfbea45799bb161cb293cf1a1.md)
+
+[Scheduling & Timer](SCIT%20Wiki%20478a49491fd748c58ab007925b18a5c9/Scheduling%20&%20Timer%20d8657b99818c419c8ae5ec091dfce17a.md)
+
+[From String to char](SCIT%20Wiki%20478a49491fd748c58ab007925b18a5c9/From%20String%20to%20char%202c961533f28242bc83693310f32e6945.md)
+
 ## 1. 2. Algorithm 解決
 
 [Average Problem](SCIT%20Wiki%20478a49491fd748c58ab007925b18a5c9/Average%20Problem%2039e3a4cc3650434caf0242a0a6def6cd.md)
@@ -33,3 +39,7 @@
 [Fake Average problem](SCIT%20Wiki%20478a49491fd748c58ab007925b18a5c9/Fake%20Average%20problem%209bdbaac78bb8416387d8664c1c713d28.md)
 
 [Blackjack](SCIT%20Wiki%20478a49491fd748c58ab007925b18a5c9/Blackjack%20559a5a7e0e8c43aba1883ea9518cbfb9.md)
+
+[Bubble Sort](SCIT%20Wiki%20478a49491fd748c58ab007925b18a5c9/Bubble%20Sort%204c1df446498441aba66fffdd4a718d6c.md)
+
+[Insert Sort](SCIT%20Wiki%20478a49491fd748c58ab007925b18a5c9/Insert%20Sort%20f08923088f9f4f138a9f348ae6427833.md)
