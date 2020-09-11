@@ -11,7 +11,6 @@ public class Gomoku {
 		int count = 0;
 		
 		while(true) {
-			int[][] copy = new int[19][19];
 			String temp ="";
 			String turn ="";
 			count++;
