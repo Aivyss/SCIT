@@ -1,9 +1,11 @@
 package java20200912;
 
 public class ComplexCalc {
+	
 	public ComplexCalc() { // Constructor
 		
 	}
+	
 	static double[] add(double real1, double imagin1, double real2, double imagin2) {
 		double real = real1 + real2;
 		double imagin = imagin1 + imagin2;
@@ -76,8 +78,8 @@ public class ComplexCalc {
 		double real;
 		double imagin;
 
-		denomi = multiply(real2, imagin2, real2, imagin2);
-		numer = multiply(real2, imagin2, real1, imagin1);
+		denomi = multiply(real2, imagin2, real2, -imagin2);
+		numer = multiply(real2, -imagin2, real1, imagin1);
 
 		real = numer[0] / denomi[0];
 		imagin = numer[1] / denomi[0];
@@ -89,14 +91,14 @@ public class ComplexCalc {
 		return complex;
 	}
 
-	static 	double[] divide(double[] complex1, double[] complex2) {
+	static double[] divide(double[] complex1, double[] complex2) {
 		double[] denomi = new double[2];
 		double[] numer = new double[2];
 		double real;
 		double imagin;
 
-		denomi = multiply(complex2, complex2);
-		numer = multiply(complex1, complex2);
+		denomi = multiply(complex2[0], complex2[1], complex2[0], -complex2[1]);
+		numer = multiply(complex1[0], complex1[1], complex2[0], -complex2[1]);
 
 		real = numer[0] / denomi[0];
 		imagin = numer[1] / denomi[0];
