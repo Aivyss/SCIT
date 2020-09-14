@@ -34,8 +34,11 @@ public class Integration {
 		switch (Integer.parseInt(funcinfo[3])) {
 		case 1:
 			output = polynomial(dxInput, initial, finish);
+			break;
+		case 2:
+			output = exponential(dxInput, initial, finish);
+			break;
 		}
-
 		return output;
 	}
 
@@ -90,5 +93,33 @@ public class Integration {
 		}
 
 		return totalSum;
+	}
+
+	public static BigDecimal exponential(BigDecimal dx, BigDecimal initial, BigDecimal finish) {
+		// coefficient input
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Input coefficinets : ");
+		String coeffinput = sc.nextLine();
+
+		// check the coefficients
+		String[] coeffiTemp = coeffinput.split("-");
+		BigDecimal[] coefficients = new BigDecimal[coeffiTemp.length];
+		for (int i = 0; i < coeffiTemp.length; i++) {
+			coefficients[i] = new BigDecimal(coeffiTemp[i]);
+		}
+
+		// integration
+		BigDecimal sum = new BigDecimal("0");
+		while ((initial.add(dx)).compareTo(finish) == -1) {
+			BigDecimal temp3 = new BigDecimal(Double.toString(Math.exp(coefficients[1].doubleValue()*initial.doubleValue())));
+			
+			sum = sum.add(temp3.multiply(dx));
+			
+			initial = initial.add(dx);
+		}
+
+		// multiply coefficient
+		sum = coefficients[0].multiply(sum);
+		return sum;
 	}
 }
