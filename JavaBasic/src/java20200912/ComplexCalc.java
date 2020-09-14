@@ -5,7 +5,6 @@ public class ComplexCalc {
 	public ComplexCalc() { // Constructor
 		
 	}
-	
 	static double[] add(double real1, double imagin1, double real2, double imagin2) {
 		double real = real1 + real2;
 		double imagin = imagin1 + imagin2;
