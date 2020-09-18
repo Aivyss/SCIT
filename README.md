@@ -43,3 +43,11 @@
 [Bubble Sort](SCIT%20Wiki%20478a49491fd748c58ab007925b18a5c9/Bubble%20Sort%204c1df446498441aba66fffdd4a718d6c.md)
 
 [Insert Sort](SCIT%20Wiki%20478a49491fd748c58ab007925b18a5c9/Insert%20Sort%20f08923088f9f4f138a9f348ae6427833.md)
+
+[Kick down (Gear Problem)](SCIT%20Wiki%20478a49491fd748c58ab007925b18a5c9/Kick%20down%20(Gear%20Problem)%204ba1f3f61f97413290abef36a025a004.md)
+
+# 2. Toy Project
+
+[Post-it](SCIT%20Wiki%20478a49491fd748c58ab007925b18a5c9/Post-it%20b5dd84f38b554b6aa273f90207b86db1.md)
+
+[Integral Machine](SCIT%20Wiki%20478a49491fd748c58ab007925b18a5c9/Integral%20Machine%20b41dfd678fd74399b91c4160550e7f9f.md)
