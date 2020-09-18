@@ -71,7 +71,7 @@ public class Integration {
 			for (int i = 1; i < coeffiTemp.length; i++) {
 				initial = temp2;
 				while ((initial.add(dx)).compareTo(finish) == -1) {
-					for (int j = 1; j <= i; j++) { // x^n 승
+					for (int j = 1; j <= i; j++) { // x^n ?��
 						temp1 = temp1.multiply(initial);
 					}
 					sum[i] = sum[i].add(temp1.multiply(dx));
