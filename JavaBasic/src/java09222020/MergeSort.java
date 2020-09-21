@@ -96,18 +96,6 @@ public class MergeSort {
 		}
 
 		mergeSort(temporary);
-
-		/*
-		 * mergeSort(temporary); int[] zero = (int[]) splitted.get(0); int[] one =
-		 * (int[]) splitted.get(1); int[] integration= new int[zero.length+one.length];
-		 * while (i < zero.length || j < one.length) { if (i >= zero.length) {
-		 * integration[k] = one[j]; k++; j++; } else if (j >= one.length) {
-		 * integration[k] = zero[i]; k++; i++; } else { if (zero[i] < one[j]) {
-		 * integration[k] = zero[i]; i++; k++; } else { integration[k] = one[j]; j++;
-		 * k++; } } }
-		 * 
-		 * splitted.set(0, integration); splitted.remove(1);
-		 */
 	}
 
 	// Print Method
