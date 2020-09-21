@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MergeSort {
+	// Define Member variables
 	ArrayList<Object> splitted = new ArrayList<Object>();
 	ArrayList<Object> input = new ArrayList<Object>();
 	ArrayList<Object> output = new ArrayList<Object>();
@@ -15,7 +16,7 @@ public class MergeSort {
 		ArrayList<Object> input = new ArrayList<Object>();
 		Scanner sc = new Scanner(System.in);
 
-		// Process
+		// Input Process
 		while (true) {
 			String str = sc.next();
 
@@ -36,7 +37,7 @@ public class MergeSort {
 		this.input = input;
 	}
 
-	// Array splitter right Method
+	// splitter method
 	public void splitter(ArrayList<Object> input) {
 		int[] array = (int[]) input.get(0);
 		for (int i = 0; i < array.length; i++) {
@@ -48,13 +49,15 @@ public class MergeSort {
 
 	// Merge Sort method
 	public void mergeSort(ArrayList<Object> splitted) {
-		ArrayList<Object> temporary = new ArrayList<Object>();
-		// Define variables
+		ArrayList<Object> splittedAfter = new ArrayList<Object>();
+		
+		// Recursive method end check
 		if (splitted.size() == 1) {
-			this.output = splitted;
+			this.output = splitted; //  splittedAfter <--(n-th Recursive)-- splitted
 			return;
 		}
-
+		
+		// Merging Process
 		while (splitted.size() >= 2) {
 			int i = 0;
 			int j = 0;
@@ -63,8 +66,8 @@ public class MergeSort {
 			int[] zero = (int[]) splitted.get(0);
 			int[] one = (int[]) splitted.get(1);
 			int[] integration = new int[zero.length + one.length];
+			
 			while (i < zero.length || j < one.length) {
-				
 				if (i >= zero.length) {
 					integration[k] = one[j];
 					k++;
@@ -84,18 +87,19 @@ public class MergeSort {
 						k++;
 					}
 				}
-			} // sort while end
-
-			temporary.add(integration);
+			}
+			
+			// Reduced Process
+			splittedAfter.add(integration);
 			splitted.remove(0);
 			splitted.remove(0);
-		} // size while end
-
-		if (splitted.size() == 1) {
-			temporary.add((int[]) splitted.get(0));
 		}
 
-		mergeSort(temporary);
+		if (splitted.size() == 1) {
+			splittedAfter.add((int[]) splitted.get(0));
+		}
+
+		mergeSort(splittedAfter); // Recursive call (repeat again)
 	}
 
 	// Print Method
