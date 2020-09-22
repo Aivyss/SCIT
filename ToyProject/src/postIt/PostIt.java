@@ -10,8 +10,7 @@ public class PostIt {
 	private String title;
 	private String content;
 	private ArrayList<String> tags = new ArrayList<String>();
-	private int[] date = new int[6];
-	// [0]: year [1]: month [2]: date [3]: hour [4]: minute [5]: second
+	private String date;
 
 	// To do List ON/OFF
 	private boolean toDoOnOFF;
@@ -22,21 +21,23 @@ public class PostIt {
 
 	// Alert ON/OFF
 	boolean alertOnOff;
-	int[] alertDate = new int[6];
+	String alertDate;
 
 	// Constructor
 	public PostIt() {
 		Calendar date = Calendar.getInstance();
-		this.date[0] = date.get(Calendar.YEAR);
-		this.date[1] = 1+date.get(Calendar.MONTH);
-		this.date[2] = date.get(Calendar.DAY_OF_MONTH);
-		this.date[3] = date.get(Calendar.HOUR);
-		this.date[4] = date.get(Calendar.MINUTE);
-		this.date[5] = date.get(Calendar.SECOND);
+		this.date = "";
+		this.date += date.get(Calendar.YEAR) + "-";
+		this.date += (1 + date.get(Calendar.MONTH)) + "-";
+		this.date += date.get(Calendar.DAY_OF_MONTH) + "-";
+		this.date += date.get(Calendar.HOUR) + "-";
+		this.date += date.get(Calendar.MINUTE) + "-";
+		this.date += date.get(Calendar.SECOND);
 	}
 
 	// PostItView Method
 	public void postItView() {
+		// Print Todo status
 		if (toDoOnOFF) {
 			if (toDo) {
 				System.out.print("/   /");
@@ -51,16 +52,11 @@ public class PostIt {
 		for (int i = 0; i < tags.size(); i++) {
 			System.out.println("tag" + (i + 1) + ": " + tags.get(i));
 		}
-		
-		System.out.print("Created Date : ");
-		for (int i = 0; i < date.length; i++) {
-			System.out.print(date[i]);
-			if (i != date.length - 1) {
-				System.out.print("-");
-			}
-		}
-		System.out.println();
 
+		System.out.print("Created Date : ");
+		System.out.println(date);
+		
+		// print Pin status
 		if (pin) {
 			System.out.print("Pin : O");
 		} else {
@@ -68,15 +64,6 @@ public class PostIt {
 		}
 		System.out.println();
 
-		if (alertOnOff) {
-			for (int i = 0; i < alertDate.length; i++) {
-				System.out.print(date[i]);
-				if (i != date.length - 1) {
-					System.out.print("-");
-				}
-			}
-			System.out.println();
-		}
 	} // PostItView method end
 
 	// writePostIt Method
@@ -99,5 +86,73 @@ public class PostIt {
 	// tag getter
 	public ArrayList<String> getTag() {
 		return tags;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public ArrayList<String> getTags() {
+		return tags;
+	}
+
+	public void setTags(ArrayList<String> tags) {
+		this.tags = tags;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public boolean isToDoOnOFF() {
+		return toDoOnOFF;
+	}
+
+	public void setToDoOnOFF(boolean toDoOnOFF) {
+		this.toDoOnOFF = toDoOnOFF;
+	}
+
+	public boolean isToDo() {
+		return toDo;
+	}
+
+	public void setToDo(boolean toDo) {
+		this.toDo = toDo;
+	}
+
+	public boolean isPin() {
+		return pin;
+	}
+
+	public void setPin(boolean pin) {
+		this.pin = pin;
+	}
+
+	public boolean isAlertOnOff() {
+		return alertOnOff;
+	}
+
+	public void setAlertOnOff(boolean alertOnOff) {
+		this.alertOnOff = alertOnOff;
+	}
+
+	public String getAlertDate() {
+		return alertDate;
+	}
+
+	public void setAlertDate(String alertDate) {
+		this.alertDate = alertDate;
 	}
 }
