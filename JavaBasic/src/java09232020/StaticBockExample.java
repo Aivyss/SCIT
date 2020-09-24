@@ -1,4 +1,4 @@
-package java20200923;
+package java09232020;
 
 public class StaticBockExample {
 	private static int i;
