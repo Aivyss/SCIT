@@ -1,4 +1,4 @@
-package java20200923;
+package java09232020;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
