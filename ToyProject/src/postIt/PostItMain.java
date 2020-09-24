@@ -1,5 +1,7 @@
 package postIt;
 
+import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,7 +11,7 @@ public class PostItMain {
 		PostItStorage storage = new PostItStorage();
 		PostIt tempPostIt;
 		Scanner sc = new Scanner(System.in);
-		
+		String pathName = "src"  + File.separator  + "storage" + File.separator + "PostItStorage.txt";
 		// Define variables
 		int selector;
 		
@@ -19,7 +21,8 @@ public class PostItMain {
 			System.out.println("1. Write Post it");
 			System.out.println("2. View all Post it");
 			System.out.println("3. View tag selected Post it");
-			System.out.println("4. exit");
+			System.out.println("4. Save Post it");
+			System.out.println("5. exit");
 			System.out.println("====================================");
 			System.out.print("Select menu : ");
 			selector = sc.nextInt();
@@ -54,6 +57,8 @@ public class PostItMain {
 				
 				collector.tagView(tag);
 			} else if (selector == 4) {
+				storage.writeFile(pathName);
+			} else if (selector == 5) {
 				break;
 			}
 		}

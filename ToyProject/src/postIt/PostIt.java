@@ -155,4 +155,9 @@ public class PostIt {
 	public void setAlertDate(String alertDate) {
 		this.alertDate = alertDate;
 	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
 }

@@ -1,7 +1,9 @@
 package postIt;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -41,7 +43,7 @@ public class PostItStorage {
 
 			for (int i = 0; i < storage.size(); i++) {
 				PostIt temp = (PostIt) storage.get(i);
-				bw.write("<Title>" + i + "\n");
+				bw.write("<Title>" + "\n");
 				bw.write(temp.getTitle() + "\n");
 				
 				bw.write("<Content>" + "\n");
@@ -104,6 +106,51 @@ public class PostItStorage {
 				}
 			}
 		} // finally end
+	}// file writer method end
+	
+	public void readPostIts(String pathName) {
+		File file = new File(pathName);
+		try {
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr); 
+			PostIt pi = new PostIt();
+			String oneLine = "";
+			
+			oneLine = br.readLine();
+			if (oneLine.equals("<Title>")) {
+				oneLine = br.readLine();
+				pi.setTitle(oneLine);
+			}
+			if (oneLine.equals("<Content>")) {
+				oneLine = br.readLine();
+				pi.setContent(oneLine);
+			}
+			if (oneLine.equals("<Create date>")) {
+				oneLine = br.readLine();
+				pi.setDate(oneLine);
+			}
+			if (oneLine.equals("<To do>")) {
+				oneLine = br.readLine();
+				if (oneLine.equals("T")) {
+					pi.setToDoOnOFF(true);
+				} else {
+					pi.setToDoOnOFF(false);
+				}
+				
+				oneLine = br.readLine();
+				if (oneLine.equals("T")) {
+					pi.setToDo(true);
+				} else {
+					pi.setToDo(false);
+				}
+				
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-} // file writer method end
+} 
 
