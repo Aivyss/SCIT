@@ -1,0 +1,35 @@
+<Title>
+오늘할일을 정해보세요.
+<Content>
+숨만쉬기가 목표입니다.
+<Tags>
+2
+아무말대잔치
+숨쉬기운동
+<Create date>
+2020-9-21-2-36-27
+<To do>
+F
+F
+<Pin>
+F
+<Alert>
+F
+null
+<Title>
+오늘도 열심히 놀았습니다.
+<Content>
+언제 공부할지 모르겠습니다.
+<Tags>
+1
+빈둥빈둥인생
+<Create date>
+2020-9-21-2-36-55
+<To do>
+F
+F
+<Pin>
+F
+<Alert>
+F
+null

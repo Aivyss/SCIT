@@ -3,6 +3,7 @@ package postIt;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -40,24 +41,30 @@ public class PostItStorage {
 		try {
 			fw = new FileWriter(pathName);
 			bw = new BufferedWriter(fw);
-
+			
+			// the number of Post-It
+			bw.write(Integer.toString(storage.size()));
+			bw.write("\n");
+			
+			// Post-It write process
 			for (int i = 0; i < storage.size(); i++) {
 				PostIt temp = (PostIt) storage.get(i);
 				bw.write("<Title>" + "\n");
 				bw.write(temp.getTitle() + "\n");
-				
+
 				bw.write("<Content>" + "\n");
 				bw.write(temp.getContent() + "\n");
-				
+
 				bw.write("<Tags>" + "\n");
 				ArrayList<String> tempTags = temp.getTags();
+				bw.write(Integer.toString(tempTags.size()));
 				for (int j = 0; j < tempTags.size(); j++) {
 					bw.write(tempTags.get(j) + "\n");
 				}
-				
+
 				bw.write("<Create date>" + "\n");
 				bw.write(temp.getDate() + "\n");
-				
+
 				bw.write("<To do>" + "\n");
 				if (temp.isToDoOnOFF()) {
 					bw.write("T" + "\n");
@@ -108,49 +115,113 @@ public class PostItStorage {
 		} // finally end
 	}// file writer method end
 	
-	public void readPostIts(String pathName) {
+	// readFile method
+	public void readFile(String pathName) {
 		File file = new File(pathName);
+		FileReader fr = null;
+		BufferedReader br = null;
+		
 		try {
-			FileReader fr = new FileReader(file);
-			BufferedReader br = new BufferedReader(fr); 
+			fr = new FileReader(file);
+			br = new BufferedReader(fr);
 			PostIt pi = new PostIt();
 			String oneLine = "";
 			
+			// Size check
 			oneLine = br.readLine();
-			if (oneLine.equals("<Title>")) {
+			int size = Integer.parseInt(oneLine);
+			
+			// read process
+			for (int i=1; i<=size; i++) {
+				
+				// title read
+				br.readLine();
 				oneLine = br.readLine();
 				pi.setTitle(oneLine);
-			}
-			if (oneLine.equals("<Content>")) {
+
+				// content read
+				br.readLine();
 				oneLine = br.readLine();
 				pi.setContent(oneLine);
-			}
-			if (oneLine.equals("<Create date>")) {
+				
+				// tag read
+				br.readLine();
+				int numTags = Integer.parseInt(br.readLine());
+				ArrayList<String> tempTags = new ArrayList<String>();
+				for (int j=0; j<numTags; j++) {
+					tempTags.add(br.readLine());
+				}
+				pi.setTags(tempTags);
+				
+				// created data read
+				br.readLine();
 				oneLine = br.readLine();
 				pi.setDate(oneLine);
-			}
-			if (oneLine.equals("<To do>")) {
-				oneLine = br.readLine();
-				if (oneLine.equals("T")) {
+
+				// To-do read
+				br.readLine(); // <To do>
+				br.readLine();
+				if ("T".equals(oneLine)) {
 					pi.setToDoOnOFF(true);
 				} else {
 					pi.setToDoOnOFF(false);
 				}
 				
 				oneLine = br.readLine();
-				if (oneLine.equals("T")) {
+				if ("T".equals(oneLine)) {
 					pi.setToDo(true);
 				} else {
 					pi.setToDo(false);
 				}
 				
+				// Pin read
+				br.readLine();
+				oneLine = br.readLine();
+				if ("T".equals(oneLine)) {
+					pi.setPin(true);
+				} else {
+					pi.setPin(false);
+				}
+				
+				// Alert 
+				br.readLine();
+				oneLine = br.readLine();
+				if ("F".equals(oneLine)) {
+					pi.setAlertOnOff(false);
+					oneLine = br.readLine();
+					pi.setAlertDate(oneLine);
+				} else {
+					pi.setAlertOnOff(true);
+					oneLine = br.readLine();
+					pi.setAlertDate(oneLine);
+				}
+				
+				store(pi);
+				// Reset container
+				pi = new PostIt();
 			}
+		} catch (FileNotFoundException e) {
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-	}
-} 
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 
+			if (fr != null) {
+				try {
+					fr.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		} // finally end
+	}
+}
