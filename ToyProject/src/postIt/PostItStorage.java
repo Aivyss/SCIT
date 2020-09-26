@@ -49,41 +49,55 @@ public class PostItStorage {
 			// Post-It write process
 			for (int i = 0; i < storage.size(); i++) {
 				PostIt temp = (PostIt) storage.get(i);
+				
+				// Write Basic Post-It Information
 				bw.write("<Title>" + "\n");
 				bw.write(temp.getTitle() + "\n");
-
 				bw.write("<Content>" + "\n");
 				bw.write(temp.getContent() + "\n");
-
+				
+				// Write Tags 
 				bw.write("<Tags>" + "\n");
 				ArrayList<String> tempTags = temp.getTags();
 				bw.write(Integer.toString(tempTags.size()));
 				for (int j = 0; j < tempTags.size(); j++) {
 					bw.write(tempTags.get(j) + "\n");
 				}
-
+				
+				// Write date
 				bw.write("<Create date>" + "\n");
 				bw.write(temp.getDate() + "\n");
-
+				
+				// Write To-do information
 				bw.write("<To do>" + "\n");
 				if (temp.isToDoOnOFF()) {
 					bw.write("T" + "\n");
 				} else {
 					bw.write("F" + "\n");
 				}
-				if (temp.isToDo()) {
-					bw.write("T" + "\n");
-				} else {
-					bw.write("F" + "\n");
+				ArrayList<Boolean> tempToDoBox = temp.getToDoBox();
+				ArrayList<String> tempToDoContent = temp.getToDoContent();
+				bw.write(tempToDoBox.size());
+				for (int j=0; j<temp.getToDoBox().size(); j++) {
+					if (tempToDoBox.get(j)) {
+						bw.write("T" + "\n");
+					} else {
+						bw.write("F" + "\n");
+					}
 				}
-
+				for (int j=0; j<temp.getToDoBox().size(); j++) {
+					bw.write(tempToDoContent.get(i));
+				}
+				
+				// Write pin status
 				bw.write("<Pin>" + "\n");
 				if (temp.isPin()) {
 					bw.write("T" + "\n");
 				} else {
 					bw.write("F" + "\n");
 				}
-
+				
+				// Write alert status
 				bw.write("<Alert>" + "\n");
 				if (temp.isAlertOnOff()) {
 					bw.write("T" + "\n");
@@ -160,19 +174,30 @@ public class PostItStorage {
 
 				// To-do read
 				br.readLine(); // <To do>
-				br.readLine();
+				br.readLine(); // ON - OFF
 				if ("T".equals(oneLine)) {
 					pi.setToDoOnOFF(true);
 				} else {
 					pi.setToDoOnOFF(false);
 				}
 				
-				oneLine = br.readLine();
-				if ("T".equals(oneLine)) {
-					pi.setToDo(true);
-				} else {
-					pi.setToDo(false);
+				oneLine = br.readLine(); // To-do size read
+				ArrayList<Boolean> toDoBox = new ArrayList<Boolean>();
+				ArrayList<String> toDoContent = new ArrayList<String>();
+				for (int j=0; j<Integer.parseInt(oneLine); j++) {
+					oneLine = br.readLine();
+					if ("T".equals(oneLine)) {
+						toDoBox.add(true);
+					} else {
+						toDoBox.add(false);
+					}
 				}
+				for (int j=0; j<Integer.parseInt(oneLine); j++) {
+					oneLine = br.readLine();
+					toDoContent.add(oneLine);
+				}
+				pi.setToDoBox(toDoBox);
+				pi.setToDoContent(toDoContent);
 				
 				// Pin read
 				br.readLine();

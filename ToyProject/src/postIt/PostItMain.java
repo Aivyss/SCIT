@@ -1,7 +1,6 @@
 package postIt;
 
 import java.io.File;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,7 +10,7 @@ public class PostItMain {
 		PostItStorage storage = new PostItStorage();
 		PostIt tempPostIt;
 		Scanner sc = new Scanner(System.in);
-		String pathName = "src" + File.separator + "storage" + File.separator + "PostItStorage.txt";
+		final String pathName = "src" + File.separator + "storage" + File.separator + "PostItStorage.txt";
 		// Define variables
 		int selector;
 
@@ -30,8 +29,11 @@ public class PostItMain {
 
 			if (selector == 1) {
 				tempPostIt = new PostIt();
+				
+				// write basic information
 				tempPostIt.writePostIt();
-
+				
+				// write tag information
 				while (true) {
 					System.out.print("Do you want to add tag? (1/0): ");
 					int check = sc.nextInt();
@@ -40,6 +42,26 @@ public class PostItMain {
 					} else {
 						break;
 					}
+				}
+				
+				// write to-do status
+				System.out.print("Do you want to switch on To-Do? (1/0): ");
+				int check = sc.nextInt();
+				sc.nextLine();
+				
+				if (check == 1) {
+					tempPostIt.setToDoOnOFF(true);
+					while (true) {					
+						System.out.print("Do you want to add toDo? (1/0): ");
+						check = sc.nextInt();
+						if (check == 1) {
+							tempPostIt.addToDoContent();
+						} else {
+							break;
+						}
+					}
+				} else {
+					tempPostIt.setToDoOnOFF(false);
 				}
 
 				storage.store(tempPostIt);
