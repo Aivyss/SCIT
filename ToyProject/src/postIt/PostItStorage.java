@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class PostItStorage {
 	private ArrayList<Object> storage = new ArrayList<Object>();
@@ -248,5 +249,23 @@ public class PostItStorage {
 				}
 			}
 		} // finally end
+	}
+	
+	// Post-It correction method
+	public void correctPostIt() {
+		int index = storage.size();
+		PostIt[] pis = new PostIt[index];
+		for (int i=0; i<storage.size(); i++) {
+			pis[i] = (PostIt) storage.get(i);
+		}
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Select Post-It that you want to correct : ");
+		int selector = sc.nextInt();
+		PostIt pi = new PostIt();
+		pi = (PostIt) storage.get(selector);
+		pi.postItView();
+		pi.writePostIt();
+		storage.set(selector, pi);
 	}
 }

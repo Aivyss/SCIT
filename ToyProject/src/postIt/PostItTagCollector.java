@@ -1,11 +1,14 @@
 package postIt;
 
+import java.util.ArrayList;
+
 //import java.util.ArrayList;
 
 public class PostItTagCollector {
 	//private ArrayList<String> tags = new ArrayList<String>();
 	//private ArrayList<Object> group = new ArrayList<Object>();
 	private PostItStorage storage = new PostItStorage();
+	ArrayList<Integer> index = new ArrayList<Integer>();
 
 	// Constructor
 	public PostItTagCollector(PostItStorage storage) {
@@ -21,6 +24,7 @@ public class PostItTagCollector {
 		for (int j = 0; j < postIt.length; j++) {
 			for (int k = 0; k < postIt[j].getTag().size(); k++) {
 				if (postIt[j].getTag().get(k).equals(tag)) {
+					index.add(j);
 					postIt[j].postItView();
 				}
 			}
