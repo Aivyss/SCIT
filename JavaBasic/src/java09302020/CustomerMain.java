@@ -32,12 +32,15 @@ public class CustomerMain {
 				sc.nextLine();
 				System.out.print("전화번호를 입력: ");
 				String searchNum = sc.nextLine();
-				for (int i=0; i<custm.length; i++) {
+				for (int i=0; i<numCount; i++) {
 					if(searchNum.equals(custm[i].getPhone())) {
 						custm[i].display();
 						break;
 					}
-					System.out.println("검색결과가 없습니다");
+					
+					if(i == numCount-1) {
+						System.out.println("검색결과가 없습니다");
+					}
 				}
 			} else if (selector == 3) {
 				System.out.println("===================");
