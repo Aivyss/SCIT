@@ -7,7 +7,9 @@ public class Customer {
 	private String name;
 	private String phone;
 	private String carNum;
-	private String place;
+	private String place; // floor-space
+	private String startDate;
+	private String endDate;
 	
 	// Sign up Process (Constructor)
 	public Customer() {
@@ -18,8 +20,13 @@ public class Customer {
 		this.carNum = sc.nextLine();
 		System.out.print("전화번호를 입력: ");
 		this.phone = sc.nextLine();
+		System.out.print("시작일 입력: ");
+		this.startDate = sc.nextLine();
+		System.out.print("종료일 입력: ");
+		this.endDate = sc.nextLine();
 		System.out.print("위치를 입력: ");
 		this.place = sc.nextLine();
+
 	}
 	
 	// Getter method
@@ -27,6 +34,18 @@ public class Customer {
 		return phone;
 	}
 	
+	public String getPlace() {
+		return place;
+	}
+	
+	public String getStartDate() {
+		return startDate;
+	}
+	
+	public String getEndDate() {
+		return endDate;
+	}
+
 	// Display method
 	public void display() {
 		System.out.println("이름 : " + this.name);
