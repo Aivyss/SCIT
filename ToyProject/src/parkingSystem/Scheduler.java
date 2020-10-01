@@ -1,4 +1,4 @@
-package java09302020.branch;
+package parkingSystem;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -45,10 +45,6 @@ public class Scheduler {
 		for (int i=0; i<startSplit.length; i++) {
 			DayLength +=endSplit[i];
 		}
-		DayLength += "-";
-		
-		System.out.print("Input schedule content : ");
-		DayLength += sc.nextLine();
 		
 		timeTable.add(DayLength);
 	}

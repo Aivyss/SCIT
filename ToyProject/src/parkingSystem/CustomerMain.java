@@ -1,11 +1,13 @@
-package java09302020;
+package parkingSystem;
 
 import java.util.Scanner;
 
 public class CustomerMain {
 
 	public static void main(String[] args) {
+		// Define variables
 		Scanner sc = new Scanner(System.in);
+		Mapping mapp = new Mapping();
 		Customer[] custm = new Customer[10000];
 		int numCount = 0;
 		
@@ -26,6 +28,7 @@ public class CustomerMain {
 					System.out.println("다른 메뉴를 선택하세요.");
 				} else {
 					custm[numCount] = new Customer();
+					custm[numCount].position(mapp);
 					numCount++;
 				}
 			} else if (selector == 2) {
