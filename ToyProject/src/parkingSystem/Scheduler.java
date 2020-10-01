@@ -82,6 +82,4 @@ public class Scheduler {
 		
 		return determinator;
 	}
-	
-	
 }

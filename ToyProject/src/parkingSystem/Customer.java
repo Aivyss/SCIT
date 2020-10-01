@@ -56,16 +56,4 @@ public class Customer {
 	public String getPhone() {
 		return phone;
 	}
-	
-	public String getPlace() {
-		return place;
-	}
-	
-	public String getStartDay() {
-		return startDay;
-	}
-	
-	public String getEndDay() {
-		return endDay;
-	}
 }
