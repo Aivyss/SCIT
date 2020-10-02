@@ -55,7 +55,7 @@ public class Mapping {
 		int chosenPlace = Integer.parseInt(placeSplit[1]);
 		
 		// Process
-		if (sch[chosenFloor-1][chosenPlace-1].checkStatus(startDay) == 0 && sch[chosenFloor-1][chosenPlace-1].checkStatus(endDay) == 0 ) {
+		if (sch[chosenFloor-1][chosenPlace-1].checkStatus(startDay) == 0 || sch[chosenFloor-1][chosenPlace-1].checkStatus(endDay) == 0 ) {
 			System.out.println("You can't use this place.");
 			System.out.print("Choose another place: ");
 			place = sc.nextLine();
