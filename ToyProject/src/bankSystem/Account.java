@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Account {
 	private Scanner sc = new Scanner(System.in);
+	private String accountHolderName;
 	private String bankName;
 	private String[] accountNum = new String[3];
 	private String kindOfAccount;
@@ -18,6 +19,9 @@ public class Account {
 
 		// input information part
 		System.out.print("Input the name of account holder : ");
+		this.accountHolderName = sc.nextLine();
+		
+		System.out.print("Input the name of bank : ");
 		this.bankName = sc.nextLine();
 		
 		System.out.print("Choose the kind of account : ");
