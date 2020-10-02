@@ -17,7 +17,7 @@ public class Person {
 	// Name setter
 	public void setName(String name) throws Exception {
 		if (name.length() < 5) {
-			this.name = name;
+ 			this.name = name;
 		} else {
 			throw new NameException();
 		}
