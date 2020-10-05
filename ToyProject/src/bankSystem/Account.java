@@ -107,12 +107,6 @@ public class Account {
 		// Define variables
 		double withdrawMoney;
 
-		// Check locking, check password
-		if (!checkPassword() || lock) {
-			System.out.println("Your account are locked");
-			return;
-		}
-
 		// Process
 		System.out.print("How much do you want ? : ");
 		withdrawMoney = sc.nextInt();
@@ -125,12 +119,6 @@ public class Account {
 	}
 
 	public double withdrawal(double money) {
-		// Check locking, check password
-		if (!checkPassword() || lock) {
-			System.out.println("Your account are locked");
-			return 0;
-		}
-
 		if (money > this.balance) {
 			System.out.println("Exceed limit, input again");
 			money = sc.nextInt();
@@ -142,35 +130,18 @@ public class Account {
 	}
 
 	public void deposit() {
-		// Check locking, check password
-		if (!checkPassword() || lock) {
-			System.out.println("Your account are locked");
-			return;
-		}
-		
 		System.out.print("put in your money : ");
 		double depositMoney = sc.nextInt();
 		this.balance += depositMoney;
 	}
 
 	public void deposit(double money) {
-		// Check locking, check password
-		if (!checkPassword() || lock) {
-			System.out.println("Your account are locked");
-			return;
-		}
-		
 		this.balance += money;
 	}
 	
 	// Check Balanace method
 	public void checkBalanace() {
-		if (!checkPassword() || lock) {
-			System.out.println("Your account are locked");
-			return;
-		} else {
-			System.out.println("Your Balance : " + this.balance);
-		}
+		System.out.println("Your Balance : " + this.balance);
 	}
 	
 	// Password check method
@@ -199,10 +170,23 @@ public class Account {
 		return flag;
 	}
 
-	// Getter
+	// Getter & Setter
 	public String getAccountNum() {
 		String accountNum = this.accountNum[0] + "-" + this.accountNum[1] + "-" + this.accountNum[2];
 
 		return accountNum;
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setLock(boolean lock) {
+		this.lock = lock;
+	}
+
+	public boolean isLock() {
+		return lock;
+	}
+	
 }

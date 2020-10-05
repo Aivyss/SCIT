@@ -97,6 +97,7 @@ public class ManageAccount {
 		}
 	} 
 	
+	// deposit process
 	public void deposit() {
 		int detected = 0;
 		Account account = null;
@@ -122,6 +123,7 @@ public class ManageAccount {
 		manage.set(detected, account);
 	}
 	
+	//witdraw process
 	public void withdrawal() {
 		int detected = 0;
 		Account account = null;
@@ -140,6 +142,13 @@ public class ManageAccount {
 				System.out.print("No result.");
 				withdrawal();
 			}
+		}
+		
+		// check the password and lock
+		if(account.isLock() || !checkPassword(account)) {
+			System.out.println("Your account are locked");
+			manage.set(detected, account);
+			return;
 		}
 		
 		account.withdrawal();
@@ -167,6 +176,38 @@ public class ManageAccount {
 			}
 		}
 		
+		// check the password and lock
+		if(account.isLock() || !checkPassword(account)) {
+			System.out.println("Your account are locked");
+			manage.set(detected, account);
+			return;
+		}
+		
 		account.checkBalanace();
+	}
+	
+	public boolean checkPassword(Account account) {
+		boolean flag = false;
+		int count = 0;
+		
+		// Check password
+		for (int i = 0; i < 3; i++) {
+			System.out.print("Input your password : ");
+			String password = sc.nextLine();
+
+			if (password.equals(account.getPassword())) {
+				flag = true;
+				break;
+			} else {
+				count++;
+
+				if (count == 3) {
+					account.setLock(true);
+					flag = false;
+				}
+			}
+		}
+		
+		return flag;
 	}
 }
