@@ -39,7 +39,6 @@ public class StringTest {
 		System.out.println(flag2);
 		
 		// .indexOf()
-		
 		int indexOf = str7.indexOf('o'); //String str7 = "Hello";
 		System.out.println(indexOf);
 		
@@ -59,8 +58,25 @@ public class StringTest {
 		String str11 = "Hello World";
 		String str12 = str11.substring(4);
 		System.out.println(str12);
-		String str13 = str11.substring(4, 7); // 4포함 7 미포함
+		String str13 = str11.substring(4, 7); // 4포함 7미포함
 		System.out.println(str13);
+		
+		// .length()
+		System.out.println(str11.length());
+		
+		// .replace(char oldChar, char newChar)
+		String str14 = "test aBCD";
+		System.out.println(str14.replace('a', 'A'));
+		String str15 = "ABCD test";
+		System.out.println(str14.replaceAll(str14, str15));
+		System.out.println(str14);
+		
+		// .toLowerCase toUpeerCase
+		System.out.println("Hello World".toLowerCase());
+		System.out.println("Hello World".toUpperCase());
+		
+		// .trim()
+		System.out.println(" Hello World ".trim());
 	}
 
 }
