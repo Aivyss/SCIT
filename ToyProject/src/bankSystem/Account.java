@@ -40,7 +40,9 @@ public class Account {
 		System.out.print("Choose your deposit password :");
 		this.password = sc.nextLine();
 		
-		System.out.println(this.accountNum[0] + "-" + this.accountNum[1] + "-" + this.accountNum[2]);
+		this.lock = false;
+		
+		System.out.println(this.accountNum[0] + "-" + this.accountNum[1] + "-" + this.accountNum[2]);	
 	}
 
 	private void kindOfAccount(int selector) {
@@ -163,21 +165,22 @@ public class Account {
 	
 	// Check Balanace method
 	public void checkBalanace() {
-		System.out.print("Input password");
 		if (!checkPassword() || lock) {
 			System.out.println("Your account are locked");
 			return;
+		} else {
+			System.out.println("Your Balance : " + this.balance);
 		}
 	}
 	
 	// Password check method
 	public boolean checkPassword() { // true: proceed, false: locking
 		boolean flag = false;
+		int count = 0;
 		
 		// Check password
 		for (int i = 0; i < 3; i++) {
-			int count = 0;
-			System.out.print("Input your password");
+			System.out.print("Input your password : ");
 			String password = sc.nextLine();
 
 			if (password.equals(this.password)) {

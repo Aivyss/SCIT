@@ -15,13 +15,13 @@ public class BankMain {
 				Account acc = new Account(manage);
 				manage.store(acc);
 			} else if (selector == 2) {
-				ui.depositUI(manage);
+				manage.deposit();
 			} else if (selector == 3) {
-				ui.withdrawUI(manage);
+				manage.withdrawal();
 			} else if (selector == 4) {
 				manage.remit();
 			} else if (selector == 5) {
-				ui.checkBalanaceUI(manage);
+				manage.checkBalance();
 			} else if (selector == 6) {
 				flag = false;
 			}

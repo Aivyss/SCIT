@@ -18,22 +18,4 @@ public class BankUI {
 		
 		return selector;
 	}
-	
-	public void depositUI(ManageAccount manage) {
-		System.out.print("Input your account number: ");
-		String accountNum = sc.nextLine();
-		manage.deposit(accountNum);
-	}
-	
-	public void withdrawUI(ManageAccount manage) {
-		System.out.print("Input your account number: ");
-		String accountNum = sc.nextLine();
-		manage.withdrawal(accountNum);
-	}
-	
-	public void checkBalanaceUI(ManageAccount manage) {
-		System.out.print("Input your account number: ");
-		String accountNum = sc.nextLine();
-		manage.checkBalance(accountNum);
-	}
 }

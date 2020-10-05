@@ -97,9 +97,12 @@ public class ManageAccount {
 		}
 	} 
 	
-	public void deposit(String accountNum) {
+	public void deposit() {
 		int detected = 0;
 		Account account = null;
+		
+		System.out.print("Input your account number : ");
+		String accountNum = sc.nextLine();
 		
 		for (int i=0; i<manage.size(); i++) {
 			if(((Account) manage.get(i)).getAccountNum().equals(accountNum)) {
@@ -109,9 +112,8 @@ public class ManageAccount {
 			} 
 			
 			if (i == manage.size()-1) {
-				System.out.print("No result. Input gain");
-				accountNum = sc.nextLine();
-				deposit(accountNum);
+				System.out.print("No result.");
+				deposit();
 			}
 		}
 		
@@ -120,9 +122,12 @@ public class ManageAccount {
 		manage.set(detected, account);
 	}
 	
-	public void withdrawal(String accountNum) {
+	public void withdrawal() {
 		int detected = 0;
 		Account account = null;
+		
+		System.out.print("Input your account number : ");
+		String accountNum = sc.nextLine();
 		
 		for (int i=0; i<manage.size(); i++) {
 			if(((Account) manage.get(i)).getAccountNum().equals(accountNum)) {
@@ -132,9 +137,8 @@ public class ManageAccount {
 			} 
 			
 			if (i == manage.size()-1) {
-				System.out.print("No result. Input gain");
-				accountNum = sc.nextLine();
-				deposit(accountNum);
+				System.out.print("No result.");
+				withdrawal();
 			}
 		}
 		
@@ -143,9 +147,12 @@ public class ManageAccount {
 		manage.set(detected, account);
 	}
 	
-	public void checkBalance(String accountNum) {
+	public void checkBalance() {
 		int detected = 0;
 		Account account = null;
+		
+		System.out.print("Input your account number : ");
+		String accountNum = sc.nextLine();
 		
 		for (int i=0; i<manage.size(); i++) {
 			if(((Account) manage.get(i)).getAccountNum().equals(accountNum)) {
@@ -155,9 +162,8 @@ public class ManageAccount {
 			} 
 			
 			if (i == manage.size()-1) {
-				System.out.print("No result. Input gain");
-				accountNum = sc.nextLine();
-				deposit(accountNum);
+				System.out.print("No result.");
+				checkBalance();
 			}
 		}
 		
