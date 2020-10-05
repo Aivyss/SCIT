@@ -36,7 +36,7 @@ public class Mapping {
 				if (j%10 == 0) {
 					System.out.println();
 				}
-				if (sch[i][j].checkStatus(startDay) == 0) {
+				if (sch[i][j].checkStatus(startDay) == 0 || sch[i][j].checkStatus(endDay) == 0 ) {
 					System.out.print("■");
 				} else {
 					System.out.print("□");
