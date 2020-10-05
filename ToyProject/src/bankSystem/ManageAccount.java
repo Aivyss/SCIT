@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class ManageAccount {
 	private Scanner sc = new Scanner(System.in);
-	private final String ACCOUNTNUMPATTERN = "^([0-9]{3})\\-([0-9]{9})\\-([0-9]{3})$";
+	private final String ACCOUNTNUMPATTERN = "^([0-9]{3})\\-([0-9]{9})\\-([0-9]{2})$";
 	private ArrayList<Object> manage = new ArrayList<Object>();
 
 	// Check duplication of account number
@@ -31,21 +31,50 @@ public class ManageAccount {
 	}
 
 	// Find Process
-	public Account find(String accountNum) {
-		Account result = null;
-
+	public int search(String accountNum) { // extract index
+		int detected = -2;
+		
 		for (int i = 0; i < manage.size(); i++) {
-			if (accountNum.equals(((Account) manage.get(i)).getAccountNum())) {
-				result = (Account) manage.get(i);
-			} else {
-				if (i == manage.size() - 1) {
-					System.out.println("No result input again");
-					accountNum = sc.nextLine();
-					find(accountNum);
+			if (((Account) manage.get(i)).getAccountNum().equals(accountNum)) {
+				detected = i;
+				break;
+			}
+
+			if (i == manage.size() - 1) {
+				System.out.print("No result.");
+				System.out.print("Do You want to stop? (Y/N): ");
+				String selector = sc.nextLine();
+				if (selector.equals("Y")) {
+					detected = -1; // Do not Process
+				} else {
+					detected = -2; // Do again
 				}
 			}
 		}
-		return result;
+		
+		return detected;
+	}
+	// input account number method
+	public String inputNum() {
+		String accountNum = "";
+		while (true) {
+			System.out.print("input your account number : ");
+			accountNum = sc.nextLine();
+
+			if (!accountNum.matches(ACCOUNTNUMPATTERN)) {
+				System.out.println("Input exactly");
+				System.out.print("Do You want to stop? (1/0): ");
+				int selector = sc.nextInt();
+				if (selector == 1) {
+					accountNum = "";
+					break;
+				}
+			} else {
+				break;
+			}
+		}
+		
+		return accountNum;
 	}
 
 	// Remit method
@@ -53,70 +82,35 @@ public class ManageAccount {
 		double transportedMoney;
 
 		// Account checking 1
-		String startAccount = "";
-		while (true) {
-			System.out.print("input your account number : ");
-			startAccount = sc.nextLine();
-
-			if (!startAccount.matches(ACCOUNTNUMPATTERN)) {
-				System.out.println("Input exactly");
-				System.out.print("Do You want to stop? (1/0): ");
-				int selector = sc.nextInt();
-				if (selector == 1) {
-					return;
-				}
-			} else {
-				break;
-			}
+		String startAccount = inputNum();
+		if (startAccount.equals("")) {
+			return;
 		}
+		
+		// search process 1
 		int startIndex = 0;
-		for (int i = 0; i < manage.size(); i++) {
-			Account temp = (Account) manage.get(i);
-			if (startAccount.equals(temp.getAccountNum())) {
-				startIndex = i;
-				break;
-			} else {
-				System.out.print("Do You want to stop? (1/0): ");
-				int selector = sc.nextInt();
-				if (selector == 1) {
-					return;
-				}
-				remit();
-			}
+		if (search(startAccount) == -1) {
+			return;
+		} else if (search(startAccount) == -2) {
+			remit();
+		} else {
+			startIndex = search(startAccount);
 		}
 
 		// Account checking 2
-		String endAccount = "";
-		while (true) {
-			System.out.print("input target account number : ");
-			endAccount = sc.nextLine();
-
-			if (!endAccount.matches(ACCOUNTNUMPATTERN)) {
-				System.out.println("Input exactly");
-				System.out.print("Do You want to stop? (1/0): ");
-				int selector = sc.nextInt();
-				if (selector == 1) {
-					return;
-				}
-			} else {
-				break;
-			}
+		String endAccount = inputNum();
+		if (startAccount.equals("")) {
+			return;
 		}
-
+		
+		// search process 2
 		int endIndex = 0;
-		for (int i = 0; i < manage.size(); i++) {
-			Account temp = (Account) manage.get(i);
-			if (endAccount.equals(temp.getAccountNum())) {
-				endIndex = i;
-				break;
-			} else {
-				System.out.print("Do You want to stop? (1/0): ");
-				int selector = sc.nextInt();
-				if (selector == 1) {
-					return;
-				}
-				remit();
-			}
+		if (search(endAccount) == -1) {
+			return;
+		} else if (search(endAccount) == -2) {
+			remit();
+		} else {
+			endIndex = search(endAccount);
 		}
 
 		// Remit Process
@@ -141,84 +135,47 @@ public class ManageAccount {
 	// deposit process
 	public void deposit() {
 		int detected = 0;
-		Account account = null;
 
 		// Input account number
-		String accountNum = "";
-		while (true) {
-			System.out.print("input target account number : ");
-			accountNum = sc.nextLine();
-
-			if (!accountNum.matches(ACCOUNTNUMPATTERN)) {
-				System.out.println("Input exactly");
-				System.out.print("Do You want to stop? (1/0): ");
-				int selector = sc.nextInt();
-				if (selector == 1) {
-					return;
-				}
-			} else {
-				break;
-			}
+		String accountNum = inputNum();
+		if (accountNum.equals("")) {
+			return;
 		}
 
-		// Search account
-		for (int i = 0; i < manage.size(); i++) {
-			if (((Account) manage.get(i)).getAccountNum().equals(accountNum)) {
-				detected = i;
-				account = (Account) manage.get(i);
-				break;
-			}
-
-			if (i == manage.size() - 1) {
-				System.out.print("No result.");
-				deposit();
-			}
+		// search account
+		if (search(accountNum) == -1) {
+			return;
+		} else if (search(accountNum) == -2) {
+			deposit();
+		} else {
+			detected = search(accountNum);
 		}
-
+		
+		Account account = (Account) manage.get(detected);
 		account.deposit();
 
 		manage.set(detected, account);
 	}
 
-	// witdraw process
+	// withdraw process
 	public void withdrawal() {
 		int detected = 0;
-		Account account = null;
 
-		// input account number
-		System.out.print("Input your account number : ");
-		String accountNum = sc.nextLine();
-
-		// check pattern
-		if (!accountNum.matches(ACCOUNTNUMPATTERN)) {
-			System.out.println("Input exactly");
-			System.out.print("Do You want to stop? (1/0): ");
-			int selector = sc.nextInt();
-			if (selector == 1) {
-				return;
-			} else {
-				withdrawal();
-			}
+		// Input account number
+		String accountNum = inputNum();
+		if (accountNum.equals("")) {
+			return;
 		}
 
-		for (int i = 0; i < manage.size(); i++) {
-			if (((Account) manage.get(i)).getAccountNum().equals(accountNum)) {
-				detected = i;
-				account = (Account) manage.get(i);
-				break;
-			}
-
-			if (i == manage.size() - 1) {
-				System.out.print("No result.");
-				System.out.print("Do You want to stop? (1/0): ");
-				int selector = sc.nextInt();
-				if (selector == 1) {
-					return;
-				} else {
-					withdrawal();
-				}
-			}
-		}
+		// search account
+		if (search(accountNum) == -1) {
+			return;
+		} else if (search(accountNum) == -2) {
+			withdrawal();
+		} else {
+			detected = search(accountNum);
+		}	
+		Account account = (Account) manage.get(detected);
 
 		// check the password and lock
 		if (account.isLock() || !checkPassword(account)) {
@@ -234,38 +191,22 @@ public class ManageAccount {
 
 	public void checkBalance() {
 		int detected = 0;
-		Account account = null;
 
 		// Input account number
-		String accountNum = "";
-		while (true) {
-			System.out.print("input target account number : ");
-			accountNum = sc.nextLine();
-
-			if (!accountNum.matches(ACCOUNTNUMPATTERN)) {
-				System.out.println("Input exactly");
-				System.out.print("Do You want to stop? (1/0): ");
-				int selector = sc.nextInt();
-				if (selector == 1) {
-					return;
-				}
-			} else {
-				break;
-			}
+		String accountNum = inputNum();
+		if (accountNum.equals("")) {
+			return;
 		}
 
-		for (int i = 0; i < manage.size(); i++) {
-			if (((Account) manage.get(i)).getAccountNum().equals(accountNum)) {
-				detected = i;
-				account = (Account) manage.get(i);
-				break;
-			}
-
-			if (i == manage.size() - 1) {
-				System.out.print("No result.");
-				checkBalance();
-			}
-		}
+		// search account
+		if (search(accountNum) == -1) {
+			return;
+		} else if (search(accountNum) == -2) {
+			checkBalance();
+		} else {
+			detected = search(accountNum);
+		}	
+		Account account = (Account) manage.get(detected);
 
 		// check the password and lock
 		if (account.isLock() || !checkPassword(account)) {
