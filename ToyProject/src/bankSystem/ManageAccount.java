@@ -65,6 +65,7 @@ public class ManageAccount {
 				System.out.println("Input exactly");
 				System.out.print("Do You want to stop? (1/0): ");
 				int selector = sc.nextInt();
+				sc.nextLine();
 				if (selector == 1) {
 					accountNum = "";
 					break;
@@ -116,6 +117,7 @@ public class ManageAccount {
 		// Remit Process
 		System.out.print("Hou much do you want to remit? : ");
 		transportedMoney = sc.nextInt();
+		sc.nextLine();
 
 		Account start = (Account) manage.get(startIndex);
 		Account end = (Account) manage.get(endIndex);

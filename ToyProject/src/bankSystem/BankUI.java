@@ -15,6 +15,7 @@ public class BankUI {
 		System.out.println("==================================");
 		System.out.print("Select >");
 		int selector = sc.nextInt();
+		sc.nextLine();
 		
 		return selector;
 	}
