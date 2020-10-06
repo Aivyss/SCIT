@@ -188,5 +188,9 @@ public class Account {
 	public boolean isLock() {
 		return lock;
 	}
+
+	public String getBankName() {
+		return bankName;
+	}
 	
 }

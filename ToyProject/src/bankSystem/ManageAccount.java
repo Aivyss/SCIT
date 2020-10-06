@@ -7,6 +7,12 @@ public class ManageAccount {
 	private Scanner sc = new Scanner(System.in);
 	private final String ACCOUNTNUMPATTERN = "^([0-9]{3})\\-([0-9]{9})\\-([0-9]{2})$";
 	private ArrayList<Object> manage = new ArrayList<Object>();
+	private final double FEERANGE1 = 300000;
+	private final double FEERANGE2 = 1500000;
+	private final double FEE1 = 400;
+	private final double FEE2 = 1500;
+	private final double FEE3 = 2000;
+	
 
 	// Check duplication of account number
 	public boolean checkDuplication(String accountNum) { // true -> OK; false ->NO
@@ -117,16 +123,31 @@ public class ManageAccount {
 		// Remit Process
 		System.out.print("Hou much do you want to remit? : ");
 		transportedMoney = sc.nextInt();
+		double fee = 0;
 		sc.nextLine();
 
 		Account start = (Account) manage.get(startIndex);
 		Account end = (Account) manage.get(endIndex);
-
-		transportedMoney = start.withdrawal(transportedMoney);
+		
+		// Check fee
+		if(!start.getBankName().equals(end.getBankName())) {
+			if (transportedMoney > FEERANGE2) {
+				fee = FEE3;
+			} else if (transportedMoney > FEERANGE1) {
+				fee = FEE2;
+			} else {
+				fee = FEE1;
+			}
+		} else {
+			fee = 0;
+		}
+		
+		transportedMoney = start.withdrawal(transportedMoney+fee);
 		if (transportedMoney == 0) {
 			System.out.println("Not processed");
 			remit();
 		} else {
+			transportedMoney-=fee;
 			end.deposit(transportedMoney);
 
 			manage.set(startIndex, start);
