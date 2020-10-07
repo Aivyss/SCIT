@@ -13,34 +13,16 @@ public class Account {
 	private boolean lock;
 	private double balance;
 
-	public Account(ManageAccount manage) {
-		// Define variables
-		int selector;
-
+	public Account(ManageAccount manage, String accountHolderName, String bankName, int selectAccount, int selectLocation, String password) {
 		// input information part
-		System.out.print("Input the name of account holder : ");
-		this.accountHolderName = sc.nextLine();
-
-		System.out.print("Input the name of bank : ");
-		this.bankName = sc.nextLine();
-
-		System.out.print("Choose the kind of account : ");
-		selector = sc.nextInt();
-		kindOfAccount(selector);
-		
-		System.out.println(
-				"1: Seoul / 2: Gyeonggi / 3: Incheon / 3: ChungCheong / 4: Gangwon / 5: Jeonra / 6: Gyeongsang / 7: Jeju");
-		System.out.print("Choose your location : ");
-		selector = sc.nextInt();
-		location(selector);
-
-		generateAccount(manage);
-
-		sc.nextLine();
-		System.out.print("Choose your deposit password :");
-		this.password = sc.nextLine();
-		
+		this.accountHolderName = accountHolderName;
+		this.bankName = bankName;
+		this.password = password;
 		this.lock = false;
+		
+		kindOfAccount(selectAccount);		
+		location(selectLocation);
+		generateAccount(manage);
 		
 		System.out.println(this.accountNum[0] + "-" + this.accountNum[1] + "-" + this.accountNum[2]);	
 	}

@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class ManageAccount {
 	private Scanner sc = new Scanner(System.in);
 	private final String ACCOUNTNUMPATTERN = "^([0-9]{3})\\-([0-9]{9})\\-([0-9]{2})$";
-	private ArrayList<Object> manage = new ArrayList<Object>();
+	private ArrayList<Account> manage = new ArrayList<Account>();
 	private final double FEERANGE1 = 300000;
 	private final double FEERANGE2 = 1500000;
 	private final double FEE1 = 400;
@@ -22,7 +22,7 @@ public class ManageAccount {
 			flag = true;
 		} else {
 			for (int i = 0; i < manage.size(); i++) {
-				Account temp = (Account) manage.get(i);
+				Account temp = manage.get(i);
 				if (temp.getAccountNum().equals(accountNum)) {
 					flag = false;
 				}
@@ -41,7 +41,7 @@ public class ManageAccount {
 		int detected = -2;
 		
 		for (int i = 0; i < manage.size(); i++) {
-			if (((Account) manage.get(i)).getAccountNum().equals(accountNum)) {
+			if (manage.get(i).getAccountNum().equals(accountNum)) {
 				detected = i;
 				break;
 			}
@@ -126,8 +126,8 @@ public class ManageAccount {
 		double fee = 0;
 		sc.nextLine();
 
-		Account start = (Account) manage.get(startIndex);
-		Account end = (Account) manage.get(endIndex);
+		Account start = manage.get(startIndex);
+		Account end = manage.get(endIndex);
 		
 		// Check fee
 		if(!start.getBankName().equals(end.getBankName())) {
@@ -174,7 +174,7 @@ public class ManageAccount {
 			detected = search(accountNum);
 		}
 		
-		Account account = (Account) manage.get(detected);
+		Account account = manage.get(detected);
 		account.deposit();
 
 		manage.set(detected, account);
@@ -198,7 +198,7 @@ public class ManageAccount {
 		} else {
 			detected = search(accountNum);
 		}	
-		Account account = (Account) manage.get(detected);
+		Account account = manage.get(detected);
 
 		// check the password and lock
 		if (account.isLock() || !checkPassword(account)) {
@@ -229,7 +229,7 @@ public class ManageAccount {
 		} else {
 			detected = search(accountNum);
 		}	
-		Account account = (Account) manage.get(detected);
+		Account account = manage.get(detected);
 
 		// check the password and lock
 		if (account.isLock() || !checkPassword(account)) {
