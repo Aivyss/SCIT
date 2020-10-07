@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PostItStorage {
-	private ArrayList<Object> storage = new ArrayList<Object>();
+	private ArrayList<PostIt> storage = new ArrayList<PostIt>();
 
 	public PostItStorage() {
 
 	}
 
 	// storage getter (from ArrayList)
-	public ArrayList<Object> getStorage() {
+	public ArrayList<PostIt> getStorage() {
 		return storage;
 	}
 
@@ -49,7 +49,7 @@ public class PostItStorage {
 			
 			// Post-It write process
 			for (int i = 0; i < storage.size(); i++) {
-				PostIt temp = (PostIt) storage.get(i);
+				PostIt temp = storage.get(i);
 				
 				// Write Basic Post-It Information
 				bw.write("<Title>" + "\n");
@@ -256,14 +256,14 @@ public class PostItStorage {
 		int index = storage.size();
 		PostIt[] pis = new PostIt[index];
 		for (int i=0; i<storage.size(); i++) {
-			pis[i] = (PostIt) storage.get(i);
+			pis[i] = storage.get(i);
 		}
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Select Post-It that you want to correct : ");
 		int selector = sc.nextInt();
 		PostIt pi = new PostIt();
-		pi = (PostIt) storage.get(selector);
+		pi = storage.get(selector);
 		pi.postItView();
 		pi.writePostIt();
 		storage.set(selector, pi);

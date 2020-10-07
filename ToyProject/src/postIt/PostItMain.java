@@ -66,10 +66,9 @@ public class PostItMain {
 
 				storage.store(tempPostIt);
 			} else if (selector == 2) {
-				ArrayList<Object> tempStorage = storage.getStorage();
+				ArrayList<PostIt> tempStorage = storage.getStorage();
 				for (int i = 0; i < tempStorage.size(); i++) {
-					tempPostIt = new PostIt();
-					tempPostIt = (PostIt) tempStorage.get(i);
+					tempPostIt = tempStorage.get(i);
 					tempPostIt.postItView();
 				}
 			} else if (selector == 3) {

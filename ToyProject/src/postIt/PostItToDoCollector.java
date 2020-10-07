@@ -4,13 +4,12 @@ import java.util.ArrayList;
 
 public class PostItToDoCollector {
 	PostItStorage storage = new PostItStorage();
-	ArrayList<Object> pis = new ArrayList<Object>();
+	ArrayList<PostIt> pis = new ArrayList<PostIt>();
 	ArrayList<Integer> index = new ArrayList<Integer>();
 	
 	public PostItToDoCollector() {
 		for (int i=0; i<storage.getStorage().size(); i++) {
-			PostIt pi = new PostIt();
-			pi = (PostIt) storage.getStorage().get(i);
+			PostIt pi = storage.getStorage().get(i);
 			
 			if (pi.isToDoOnOFF()) {
 				pis.add(pi);
@@ -23,10 +22,11 @@ public class PostItToDoCollector {
 	public void viewAllToDo() {
 		for (int i=0; i<pis.size(); i++) {
 			PostIt pi = new PostIt();
-			pi = (PostIt) pis.get(i);
+			pi = pis.get(i);
 			pi.postItView();
 		}
 	}
+	
 	// ToDo correction method
 	public void correctToDo() {
 		System.out.println("=======[Post-It list to have To do]=======");
