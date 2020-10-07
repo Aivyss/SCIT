@@ -15,11 +15,11 @@ public class Person {
 	}
 	
 	// Name setter
-	public void setName(String name) throws Exception {
+	public void setName(String name) throws NameException /* 예외처리 전가 */{
 		if (name.length() < 5) {
 			this.name = name;
 		} else {
-			throw new NameException();
+			throw new NameException(); // 예외처리를 발생
 		}
 	}
 }
