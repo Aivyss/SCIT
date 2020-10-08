@@ -3,7 +3,7 @@ package bankSystem;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ManageAccount {
+public class ManageAccount extends AbstractManageAccount {
 	private Scanner sc = new Scanner(System.in);
 	private final String ACCOUNTNUMPATTERN = "^([0-9]{3})\\-([0-9]{9})\\-([0-9]{2})$";
 	private ArrayList<Account> manage = new ArrayList<Account>();
@@ -15,7 +15,7 @@ public class ManageAccount {
 	
 
 	// Check duplication of account number
-	public boolean checkDuplication(String accountNum) { // true -> OK; false ->NO
+	protected boolean checkDuplication(String accountNum) { // true -> OK; false ->NO
 		boolean flag = true;
 
 		if (manage.size() == 0) {
@@ -32,12 +32,12 @@ public class ManageAccount {
 	}
 
 	// Store account information method
-	public void store(Account account) {
+	protected void store(Account account) {
 		manage.add(account);
 	}
 
 	// Find Process
-	public int search(String accountNum) { // extract index
+	protected int search(String accountNum) { // extract index
 		int detected = -2;
 		
 		for (int i = 0; i < manage.size(); i++) {
@@ -61,7 +61,7 @@ public class ManageAccount {
 		return detected;
 	}
 	// input account number method
-	public String inputNum() {
+	protected String inputNum() {
 		String accountNum = "";
 		while (true) {
 			System.out.print("input your account number : ");
@@ -85,7 +85,7 @@ public class ManageAccount {
 	}
 
 	// Remit method
-	public void remit() {
+	protected void remit() {
 		double transportedMoney;
 
 		// Account checking 1
@@ -156,7 +156,7 @@ public class ManageAccount {
 	}
 
 	// deposit process
-	public void deposit() {
+	protected void deposit() {
 		int detected = 0;
 
 		// Input account number
@@ -181,7 +181,7 @@ public class ManageAccount {
 	}
 
 	// withdraw process
-	public void withdrawal() {
+	protected void withdrawal() {
 		int detected = 0;
 
 		// Input account number
@@ -212,7 +212,7 @@ public class ManageAccount {
 		manage.set(detected, account);
 	}
 
-	public void checkBalance() {
+	protected void checkBalance() {
 		int detected = 0;
 
 		// Input account number
@@ -241,7 +241,7 @@ public class ManageAccount {
 		account.checkBalanace();
 	}
 
-	public boolean checkPassword(Account account) {
+	protected boolean checkPassword(Account account) {
 		boolean flag = false;
 		int count = 0;
 

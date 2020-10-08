@@ -3,7 +3,7 @@ package bankSystem;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Account {
+public class Account extends AbstractAccount {
 	private Scanner sc = new Scanner(System.in);
 	private String accountHolderName;
 	private String bankName;
@@ -27,7 +27,7 @@ public class Account {
 		System.out.println(this.accountNum[0] + "-" + this.accountNum[1] + "-" + this.accountNum[2]);	
 	}
 
-	private void kindOfAccount(int selector) {
+	protected void kindOfAccount(int selector) {
 		if (selector == 1) {
 			this.kindOfAccount = "Checking account";
 			this.accountNum[2] = "01";
@@ -41,7 +41,7 @@ public class Account {
 		}
 	}
 
-	private void location(int selector) {
+	protected void location(int selector) {
 		switch (selector) {
 		case 1:
 			this.accountNum[0] = "001";
@@ -67,7 +67,7 @@ public class Account {
 		}
 	}
 
-	private void generateAccount(ManageAccount manage) {
+	protected void generateAccount(ManageAccount manage) {
 		Random rd = new Random();
 		String accountNumMiddle = "";
 		
@@ -111,23 +111,23 @@ public class Account {
 		return money;
 	}
 
-	public void deposit() {
+	protected void deposit() {
 		System.out.print("put in your money : ");
 		double depositMoney = sc.nextInt();
 		this.balance += depositMoney;
 	}
 
-	public void deposit(double money) {
+	protected void deposit(double money) {
 		this.balance += money;
 	}
 	
 	// Check Balanace method
-	public void checkBalanace() {
+	protected void checkBalanace() {
 		System.out.println("Your Balance : " + this.balance);
 	}
 	
 	// Password check method
-	public boolean checkPassword() { // true: proceed, false: locking
+	protected boolean checkPassword() { // true: proceed, false: locking
 		boolean flag = false;
 		int count = 0;
 		
@@ -153,26 +153,25 @@ public class Account {
 	}
 
 	// Getter & Setter
-	public String getAccountNum() {
+	protected String getAccountNum() {
 		String accountNum = this.accountNum[0] + "-" + this.accountNum[1] + "-" + this.accountNum[2];
 
 		return accountNum;
 	}
 
-	public String getPassword() {
+	protected String getPassword() {
 		return password;
 	}
 
-	public void setLock(boolean lock) {
+	protected void setLock(boolean lock) {
 		this.lock = lock;
 	}
 
-	public boolean isLock() {
+	protected boolean isLock() {
 		return lock;
 	}
 
-	public String getBankName() {
+	protected String getBankName() {
 		return bankName;
 	}
-	
 }
