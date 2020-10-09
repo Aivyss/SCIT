@@ -6,6 +6,7 @@ import java.util.Scanner;
 public abstract class AbstractManageAccount {
 	private Scanner sc = new Scanner(System.in);
 	private ArrayList<Account> manage = new ArrayList<Account>();
+	//private Account[] account = new Account[10000]; (ArrayList를 모른다면 이것을 사용해도 됨)
 	
 
 	// Check duplication of account number
