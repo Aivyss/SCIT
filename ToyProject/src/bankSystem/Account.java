@@ -3,7 +3,7 @@ package bankSystem;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Account extends AbstractAccount {
+public class Account extends AbstractAccount implements BankSecurity {
 	private Scanner sc = new Scanner(System.in);
 	private String accountHolderName;
 	private String bankName;
@@ -127,7 +127,8 @@ public class Account extends AbstractAccount {
 	}
 	
 	// Password check method
-	protected boolean checkPassword() { // true: proceed, false: locking
+	@Override
+	public boolean checkPassword() { // true: proceed, false: locking
 		boolean flag = false;
 		int count = 0;
 		
@@ -153,25 +154,27 @@ public class Account extends AbstractAccount {
 	}
 
 	// Getter & Setter
-	protected String getAccountNum() {
+	public String getAccountNum() {
 		String accountNum = this.accountNum[0] + "-" + this.accountNum[1] + "-" + this.accountNum[2];
 
 		return accountNum;
 	}
 
-	protected String getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	protected void setLock(boolean lock) {
+	@Override
+	public void setLock(boolean lock) {
 		this.lock = lock;
 	}
 
-	protected boolean isLock() {
+	@Override
+	public boolean isLock() {
 		return lock;
 	}
 
-	protected String getBankName() {
+	public String getBankName() {
 		return bankName;
 	}
 }

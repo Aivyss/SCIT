@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class ManageAccount extends AbstractManageAccount {
+public class ManageAccount extends AbstractManageAccount implements AccountNumberRule {
 	private Scanner sc = new Scanner(System.in);
 	private final String ACCOUNTNUMPATTERN = "^([0-9]{3})\\-([0-9]{9})\\-([0-9]{2})$";
 	private Map<String, Account> manage = new HashMap<String, Account>();
