@@ -1,12 +1,12 @@
 package bankSystem;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public abstract class AbstractManageAccount {
 	private Scanner sc = new Scanner(System.in);
-	private ArrayList<Account> manage = new ArrayList<Account>();
-	//private Account[] account = new Account[10000]; (ArrayList를 모른다면 이것을 사용해도 됨)
+	private Map<String, Account> manage = new HashMap<String, Account>();
 	
 
 	// Check duplication of account number
@@ -16,7 +16,7 @@ public abstract class AbstractManageAccount {
 	protected abstract void store(Account account);
 
 	// Search Account Process
-	protected abstract int search(String accountNum); // extract index
+	protected abstract boolean search(String accountNum); // extract index
 	
 	// input account number method
 	protected abstract String inputNum();
