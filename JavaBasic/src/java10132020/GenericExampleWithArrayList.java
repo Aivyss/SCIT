@@ -24,9 +24,13 @@ public class GenericExampleWithArrayList {
 
 		List<Integer> list2 = converter.arrayToList(inte1);
 		System.out.println(list2.size());
+		System.out.println("=========================");
 		Integer[] inte2 = new Integer[list2.size()];
 		inte2 = converter.listToArray(inte2, list2);
 		System.out.println(inte2.length);
+		for(int i : inte2) {
+			System.out.println(i);
+		}
 		
 	}
 
