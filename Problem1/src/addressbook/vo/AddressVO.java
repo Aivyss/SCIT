@@ -59,6 +59,7 @@ public class AddressVO {
 		return email;
 	}
 	
+	@Override
 	public String toString() {
 		StringBuffer buf = new StringBuffer();
 		

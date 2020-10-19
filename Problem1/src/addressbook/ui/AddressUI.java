@@ -1,6 +1,5 @@
 package addressbook.ui;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -45,10 +44,10 @@ public class AddressUI {
 
 		System.out.print("번호선택: ");
 		num = scan.nextInt();
-		if (!(num>=0 && num<=5)) {
+		if (!(num >= 0 && num <= 5)) {
 			System.out.println("[알림] 다시 입력하세요.");
 		}
-		
+
 		scan.nextLine();
 		return num;
 	}
@@ -61,7 +60,7 @@ public class AddressUI {
 		String str = scan.nextLine();
 		AddressVO vo = new AddressVO();
 		AddressVO search = manager.getAddress(str);
-		
+
 		if (search == null) {
 			vo.setName(str);
 			System.out.print("그룹: ");
@@ -87,13 +86,13 @@ public class AddressUI {
 	 * 전체 정보 출력 화면 - 끝
 	 */
 	public void output() {
-		if(manager.getList().size() <= 0) {
+		if (manager.getList().size() <= 0) {
 			System.out.println("[알림] 등록된 데이터가 없습니다.");
 		} else {
-			for (int i=0; i<manager.getList().size(); i++) {
-				System.out.println(manager.getList().get(i).toString());
-			}			
-		}	
+			for (AddressVO vo : manager.getList()) {
+				System.out.println(vo.toString());
+			}
+		}
 	}
 
 	/**
@@ -103,12 +102,12 @@ public class AddressUI {
 		System.out.print("검색할 이름: ");
 		String name = scan.nextLine();
 		AddressVO vo = manager.getAddress(name);
-		if (vo == null) {
+		if (vo == null || name.equals(vo.getName())) {
 			System.out.println("[알림] 검색 결과가 없습니다.");
 		} else {
 			System.out.println(vo.toString());
 		}
-		
+
 	}
 
 	/**
@@ -117,12 +116,12 @@ public class AddressUI {
 	public void searchGroup() {
 		System.out.print("검색할 그룹: ");
 		String group = scan.nextLine();
-		List<AddressVO> temp = manager.getGroupList(group);
-		if (temp.size() <= 0) {
+		List<AddressVO> groupSearch = manager.getGroupList(group);
+		if (groupSearch.size() <= 0 || "".equals(group)) {
 			System.out.println("[알림] 검색 결과가 없습니다.");
 		} else {
-			for (int i=0; i<temp.size(); i++) {
-				System.out.println(temp.get(i).toString());
+			for (AddressVO vo : groupSearch) {
+				System.out.println(vo.toString());
 			}
 		}
 
@@ -135,7 +134,7 @@ public class AddressUI {
 		System.out.print("검색할 이름: ");
 		String name = scan.nextLine();
 		boolean flag = manager.removeAddress(name);
-		
+
 		if (flag) {
 			System.out.println("[알림] 삭제되었습니다.");
 		} else {
