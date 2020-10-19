@@ -1,6 +1,7 @@
 package addressbook.ui;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import addressbook.manager.AddressManager;
@@ -44,13 +45,11 @@ public class AddressUI {
 
 		System.out.print("번호선택: ");
 		num = scan.nextInt();
-		if (num == 1 || num == 2 || num == 3 || num == 4 || num == 5 || num == 0) {
-			return num;
-		} else {
+		if (!(num>=0 && num<=5)) {
 			System.out.println("[알림] 다시 입력하세요.");
-			num = menu();
 		}
-
+		
+		scan.nextLine();
 		return num;
 	}
 
@@ -58,7 +57,6 @@ public class AddressUI {
 	 * 새 주소 정보 입력 화면 - 끝
 	 */
 	public void input() {
-		scan.nextLine();
 		System.out.print("등록할 이름: ");
 		String str = scan.nextLine();
 		AddressVO vo = new AddressVO();
@@ -80,32 +78,28 @@ public class AddressUI {
 			vo.setEmail(str);
 			manager.addAddress(vo);
 			System.out.print("[알림] 등록되었습니다.");
-			return;
 		} else {
 			System.out.println("[알림] 이미 등록된 이름입니다.");
-			return;
 		}
+	}
 
 	/**
 	 * 전체 정보 출력 화면 - 끝
 	 */
 	public void output() {
-		scan.nextLine();
-		if(manager.getList().size() == 0) {
+		if(manager.getList().size() <= 0) {
 			System.out.println("[알림] 등록된 데이터가 없습니다.");
-			return;
-		}
-		
-		for (int i=0; i<manager.getList().size(); i++) {
-			System.out.println(manager.getList().get(i).toString());
-		}
+		} else {
+			for (int i=0; i<manager.getList().size(); i++) {
+				System.out.println(manager.getList().get(i).toString());
+			}			
+		}	
 	}
 
 	/**
 	 * 이름으로 주소 검색 화면 - 끝
 	 */
 	public void searchName() {
-		scan.nextLine();
 		System.out.print("검색할 이름: ");
 		String name = scan.nextLine();
 		AddressVO vo = manager.getAddress(name);
@@ -121,11 +115,10 @@ public class AddressUI {
 	 * 그룹으로 주소 검색 - 끝
 	 */
 	public void searchGroup() {
-		scan.nextLine();
 		System.out.print("검색할 그룹: ");
 		String group = scan.nextLine();
-		ArrayList<AddressVO> temp = manager.getGroupList(group);
-		if (temp.size() == 0) {
+		List<AddressVO> temp = manager.getGroupList(group);
+		if (temp.size() <= 0) {
 			System.out.println("[알림] 검색 결과가 없습니다.");
 		} else {
 			for (int i=0; i<temp.size(); i++) {
@@ -139,7 +132,6 @@ public class AddressUI {
 	 * 이름으로 찾아서 주소 삭제 - 끝
 	 */
 	public void delete() {
-		scan.nextLine();
 		System.out.print("검색할 이름: ");
 		String name = scan.nextLine();
 		boolean flag = manager.removeAddress(name);
@@ -155,6 +147,6 @@ public class AddressUI {
 	 * 프로그램 종료 시 마무리 작업
 	 */
 	public void end() {
-		System.out.println("프로그램을 종료합니다.");
+		System.out.println("[알림] 프로그램을 종료합니다.");
 	}
 }

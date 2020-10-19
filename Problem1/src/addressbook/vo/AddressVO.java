@@ -60,17 +60,23 @@ public class AddressVO {
 	}
 	
 	public String toString() {
-		String str = "";
-		str += "이름: ";
-		str += getName() + ", ";
-		str += "그룹: ";
-		str += getGroup() + ", ";
-		str += "전화: ";
-		str += getPhone() + ", ";
-		str += "주소: ";
-		str += getAddress() + ", ";
-		str += "Email: ";
-		str += getEmail();
-		return str;
+		StringBuffer buf = new StringBuffer();
+		
+		buf.append("이름: ");
+		buf.append(getName());
+		buf.append(", ");
+		buf.append("그룹: ");
+		buf.append(getGroup());
+		buf.append(", ");
+		buf.append("전화: ");
+		buf.append(getPhone());
+		buf.append(", ");
+		buf.append("주소: ");
+		buf.append(getAddress());
+		buf.append(", ");
+		buf.append("Email: ");
+		buf.append(getEmail());
+		
+		return buf.toString();
 	}
 }
