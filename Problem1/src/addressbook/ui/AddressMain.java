@@ -22,6 +22,10 @@ public class AddressMain {
 				ui.searchGroup();
 			} else if (num == 5) {
 				ui.delete();
+			} else if (num == 6) {
+				ui.update();
+			} else if (num == 7) {
+				ui.groupCount();
 			} else if (num == 0) {
 				ui.end();
 				break;
