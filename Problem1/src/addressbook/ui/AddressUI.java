@@ -1,7 +1,10 @@
 package addressbook.ui;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
+import java.util.Set;
 
 import addressbook.manager.AddressManager;
 import addressbook.vo.AddressVO;
@@ -34,17 +37,20 @@ public class AddressUI {
 	 */
 	public int menu() {
 		int num = 0;
-		System.out.println("[  주소록    ]");
-		System.out.println("1. 새 주소 등록");
-		System.out.println("2. 주소록 출력");
-		System.out.println("3. 이름 검색");
-		System.out.println("4. 그룹 검색");
-		System.out.println("5. 주소 삭제");
-		System.out.println("0. 프로그램 종료");
+		System.out.println(" ");
+		System.out.println("\t┌────────[주소록\t]───────┐");
+		System.out.println("\t│ 1. 새 주소 등록\t\t│");
+		System.out.println("\t│ 2. 주소록 출력\t\t│");
+		System.out.println("\t│ 3. 이름 검색\t\t│");
+		System.out.println("\t│ 4. 그룹 검색\t\t│");
+		System.out.println("\t│ 5. 주소 삭제\t\t│");
+		System.out.println("\t│ 6. 주소 수정\t\t│");
+		System.out.println("\t│ 7. 그룹별 인원 출력\t\t│");
+		System.out.println("\t│ 0. 프로그램 종료 \t\t│");
 
 		System.out.print("번호선택: ");
 		num = scan.nextInt();
-		if (!(num >= 0 && num <= 5)) {
+		if (!(num >= 0 && num <= 7)) {
 			System.out.println("[알림] 다시 입력하세요.");
 		}
 
@@ -82,6 +88,27 @@ public class AddressUI {
 		}
 	}
 
+	public AddressVO input(String name) {
+		AddressVO vo = new AddressVO();
+		vo.setName(name);
+		System.out.print("그룹: ");
+		name = scan.nextLine();
+		vo.setGroup(name);
+		System.out.print("전화: ");
+		name = scan.nextLine();
+		vo.setPhone(name);
+		System.out.print("주소: ");
+		name = scan.nextLine();
+		vo.setAddress(name);
+		System.out.print("이메일: ");
+		name = scan.nextLine();
+		vo.setEmail(name);
+		manager.addAddress(vo);
+		System.out.print("[알림] 등록되었습니다.");
+
+		return vo;
+	}
+
 	/**
 	 * 전체 정보 출력 화면 - 끝
 	 */
@@ -102,7 +129,7 @@ public class AddressUI {
 		System.out.print("검색할 이름: ");
 		String name = scan.nextLine();
 		AddressVO vo = manager.getAddress(name);
-		if (vo == null || name.equals(vo.getName())) {
+		if (vo == null || "".equals(vo.getName())) {
 			System.out.println("[알림] 검색 결과가 없습니다.");
 		} else {
 			System.out.println(vo.toString());
@@ -124,7 +151,6 @@ public class AddressUI {
 				System.out.println(vo.toString());
 			}
 		}
-
 	}
 
 	/**
@@ -139,6 +165,37 @@ public class AddressUI {
 			System.out.println("[알림] 삭제되었습니다.");
 		} else {
 			System.out.println("[알림] 삭제할 데이터가 없습니다.");
+		}
+	}
+
+	/**
+	 * 사용자로부터 이름을 입력받는다. 입력받은 이름의 정보가 있는 경우 해당하는 정보를 먼저 출력하고 그룹, 전화번호, 주소, 이메일을 다시
+	 * 입력받아서 수정해주는 메소드.
+	 */
+
+	public void update() {
+		System.out.print("검색할 이름을 입력 : ");
+		String name = scan.nextLine();
+		boolean flag = manager.update(name);
+
+		if (flag) {
+			System.out.println("[알림] 수정되었습니다.");
+		} else {
+			System.out.println("[알림] 수정할 대상이 없습니다.");
+		}
+	}
+
+	/**
+	 * Output the number of group example) 친구 3명 후배 2명 회사 8명 총 13명 list 0번째 인덱스에
+	 * 그룹명을 따로 저장
+	 */
+	public void groupCount() {
+		Map<String, Integer> result = manager.groupCount();
+		if (result == null) {
+			System.out.println("[알림] 자료가 하나도 없습니다.");
+		} else {
+			System.out.println(result);
+			System.out.println("총인원 : " + manager.getList().size());
 		}
 	}
 
