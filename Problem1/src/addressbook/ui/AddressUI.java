@@ -56,9 +56,9 @@ public class AddressUI {
 	 * 새 주소 정보 입력 화면 - 끝
 	 */
 	public void input() {
+		AddressVO vo = new AddressVO();
 		System.out.print("등록할 이름: ");
 		String str = scan.nextLine();
-		AddressVO vo = new AddressVO();
 		AddressVO search = manager.getAddress(str);
 
 		if (search == null) {

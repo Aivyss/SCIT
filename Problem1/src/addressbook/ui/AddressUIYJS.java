@@ -1,6 +1,6 @@
 package addressbook.ui;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import addressbook.manager.AddressManager;
@@ -85,7 +85,7 @@ public class AddressUIYJS {
 	 * 전체 정보 출력 화면 - 끝
 	 */
 	public void output() {
-		ArrayList<AddressVO> result = manager.getList();
+		List<AddressVO> result = manager.getList();
 		if (manager.getList().size() <= 0) {
 			System.out.println("[알림] 등록된 데이터가 없습니다.");
 		} else {
@@ -117,7 +117,7 @@ public class AddressUIYJS {
 	public void searchGroup() {
 		System.out.print("검색할 그룹: ");
 		String group = scan.nextLine();
-		ArrayList<AddressVO> temp = manager.getGroupList(group);
+		List<AddressVO> temp = manager.getGroupList(group);
 		if (temp.size() == 0) {
 			System.out.println("[알림] 검색 결과가 없습니다.");
 		} else {
