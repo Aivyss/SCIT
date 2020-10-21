@@ -21,7 +21,7 @@ public class Batter extends Player {
 	 */
 	private int score;
 	
-	/*
+	/**
 	 * 
 	 */
 	@Override
