@@ -11,6 +11,7 @@ public class Card {
 	protected List<String> nameCategoryBack = format.backCategory;
 	protected List<String> informationFront = new ArrayList<>();
 	protected List<String> informationBack = new ArrayList<>();
+	protected List<String> schedule = new ArrayList<>();
 	
 	// Constructor
 	public Card(CardFormat format) {

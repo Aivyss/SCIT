@@ -1,5 +1,6 @@
 package flashCard;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -43,6 +44,7 @@ public class Create {
 	static String getToday() {
 		String today = "";
 		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd")
 		
 		return today;
 	}
