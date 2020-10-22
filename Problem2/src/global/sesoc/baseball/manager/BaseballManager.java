@@ -79,6 +79,7 @@ public class BaseballManager implements AbstractBaseballManager {
 					flag = true;
 					break;
 				}
+				index++;
 			}
 			this.playerList.remove(index);
 		}
