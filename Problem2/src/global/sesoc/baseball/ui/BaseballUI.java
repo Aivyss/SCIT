@@ -204,7 +204,7 @@ public class BaseballUI {
 	public void print(List<Player> list) {
 		int index = 0;
 		
-		if (list == null) {
+		if (list == null || list.isEmpty()) {
 			System.out.println("검색 결과가 없습니다.");
 		} else {
 			if (list.isEmpty()) {
