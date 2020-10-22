@@ -135,21 +135,36 @@ public class BaseballManager implements AbstractBaseballManager {
 	 */
 	@Override
 	public List<Player> bestPlayers() {
-		double maxWar = 0;
+		double[] maxWar = new double[2];
+		List<Player> listPitcher = this.playerListForType(2);
+		List<Player> listBatter = this.playerListForType(3);
 		List<Player> result = new ArrayList<>();
-
+		
 		if (!playerList.isEmpty()) {
-			for (Player vo : playerList) {
-				if (maxWar < vo.getWar()) {
-					maxWar = vo.getWar();
+			for (Player vo : listPitcher) {
+				if (maxWar[0] < vo.getWar()) {
+					maxWar[0] = vo.getWar();
+				}
+			}
+			
+			for (Player vo : listBatter) {
+				if (maxWar[1] < vo.getWar()) {
+					maxWar[1] = vo.getWar();
 				}
 			}
 
-			for (Player vo : playerList) {
-				if (vo.getWar() == maxWar) {
+			for (Player vo : listPitcher) {
+				if (vo.getWar() == maxWar[0]) {
 					result.add(vo);
 				}
 			}
+			
+			for (Player vo : listBatter) {
+				if (vo.getWar() == maxWar[1]) {
+					result.add(vo);
+				}
+			}
+			
 		} else {
 			result = null;
 		}
