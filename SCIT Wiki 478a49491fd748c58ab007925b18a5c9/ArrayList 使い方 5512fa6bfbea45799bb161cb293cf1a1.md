@@ -2,15 +2,20 @@
 
 # ArrayList Data type
 
-- Class 타입
+- Object
 - import 필요함 (import java.util.ArrayList;)
 
 # ArrayListの長所
 
-- ArrayList를 이용해 메서드에서 반환값을 여러개로 할 수 있음.
+- ArrayList를 이용해 메서드에서 반환값을 여러개로 할 수 있음. 자바 메소드의 한계를 극복가능.
 - Array와 다르게 size를 유동적으로 다룰 수 있음.
+- 
 
 # ArrayList에 담을 수 있는 자료형
+
+`<>` general을 사용하므로 지정한 객체를 담을 수 있다.
+
+다형적 형변환을 이용하면 다양한 자식 객체를 받을 수도 있다.
 
 ```java
 import java.util.ArrayList;
@@ -33,13 +38,6 @@ public class ArrayListWay {
 }
 ```
 
-- Object : 
-기본적으로 객체
-그러나 정수, 배열, 실수 등 여러 타입을 받고 강제형변환을 통해 반출 가능.
-- Integer
-- Double
-- String
-
 # Methods
 
 ### .add( 변수명 )
@@ -60,4 +58,18 @@ public class ArrayListWay {
 
 ### .size()
 
-어레이리스트의 사이즈를 정수타입으로 반환
+어레이리스트의 사이즈를 integer 타입으로 반환
+
+### .isEmpty()
+
+리승트의 사이즈가 0인지 아닌지 boolean 값으로 반환
+
+# 例
+
+[https://github.com/Aivyss/SCIT/tree/master/ToyProject/src/postIt](https://github.com/Aivyss/SCIT/tree/master/ToyProject/src/postIt)
+
+[https://github.com/Aivyss/SCIT/tree/master/ToyProject/src/parkingSystem](https://github.com/Aivyss/SCIT/tree/master/ToyProject/src/parkingSystem)
+
+[https://github.com/Aivyss/SCIT/tree/master/Problem1/src/addressbook](https://github.com/Aivyss/SCIT/tree/master/Problem1/src/addressbook)
+
+[https://github.com/Aivyss/SCIT/tree/master/Problem2/src/global/sesoc/baseball](https://github.com/Aivyss/SCIT/tree/master/Problem2/src/global/sesoc/baseball)
