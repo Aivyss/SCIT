@@ -1,5 +1,7 @@
 package global.sesoc.baseball.main;
 
+import java.util.InputMismatchException;
+
 import global.sesoc.baseball.ui.BaseballUI;
 
 /**
@@ -8,7 +10,7 @@ import global.sesoc.baseball.ui.BaseballUI;
 public class BaseballMain {
 
 	public static void main(String[] args) {
-		new BaseballUI();
+			new BaseballUI();
 	}
 
 }

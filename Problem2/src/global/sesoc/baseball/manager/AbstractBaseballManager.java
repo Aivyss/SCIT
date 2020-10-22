@@ -1,6 +1,6 @@
 package global.sesoc.baseball.manager;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import global.sesoc.baseball.vo.Player;
 
@@ -44,19 +44,19 @@ public interface AbstractBaseballManager {
 	 * @param maxSalary 최대값
 	 * @return 지정한 금액 범위의 연봉을 받는 선수들의 목록
 	 */
-	public ArrayList<Player> playerListForSalary(int minSalary, int maxSalary);
+	public List<Player> playerListForSalary(int minSalary, int maxSalary);
 	
 	/**
 	 * WAR기준으로 가장 높은 선수목록을 출력한다. 같은 값이 여러 명인 경우에는 모두.
 	 * @return 선수 목록
 	 */
-	public ArrayList<Player> bestPlayers();
+	public List<Player> bestPlayers();
 	
 	/**
 	 * 전달된 타입의 선수목록을 리턴한다.
 	 * @param 선수 타입 (1:전체 2:투수 3:타자)
 	 * @return 검색된 선수 목록
 	 */
-	public ArrayList<Player> playerListForType(int type);
+	public List<Player> playerListForType(int type);
 	
 }

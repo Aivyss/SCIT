@@ -1,5 +1,7 @@
 package global.sesoc.baseball.vo;
 
+import java.util.List;
+
 /**
  * 타자 정보 VO
  */
@@ -20,9 +22,26 @@ public class Batter extends Player {
 	 * 득점
 	 */
 	private int score;
+	/**
+	 * Default constructor
+	 */
+	public Batter() {
+		
+	}
 	
 	/**
-	 * 
+	 * Specific constructor
+	 */
+	public Batter(List<Object> playerInfo) {
+		super(playerInfo);
+		this.average = (Double) playerInfo.get(5);
+		this.atbat = (Integer) playerInfo.get(6);
+		this.rbi = (Integer) playerInfo.get(7);
+		this.score = (Integer) playerInfo.get(8);
+	}
+	
+	/**
+	 * 선수의 정보를 출력하는 메소드. toStirng의 오버라이딩
 	 */
 	@Override
 	public String toString() {

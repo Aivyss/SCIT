@@ -1,5 +1,7 @@
 package global.sesoc.baseball.vo;
 
+import java.util.List;
+
 /**
  * 투수 정보 VO
  */
@@ -28,7 +30,28 @@ public class Pitcher extends Player  {
 	 * 홀드
 	 */
 	private int hold;
+	/**
+	 * default constructor
+	 */
+	public Pitcher() {
+		
+	}
+	/**
+	 * specific constructor
+	 */
+	public Pitcher(List<Object> playerInfo) {
+		super(playerInfo);
+		this.era = (Double) playerInfo.get(5);
+		this.inning = (Integer) playerInfo.get(6);
+		this.wins = (Integer) playerInfo.get(7);
+		this.losses = (Integer) playerInfo.get(8);
+		this.save = (Integer) playerInfo.get(9);
+		this.hold = (Integer) playerInfo.get(10);
+	}
 	
+	/**
+	 * 선수의 정보를 출력하는 기능을 수행하는 메소드. toString의 오버라이딩 
+	 */
 	@Override
 	public String toString() {
 		StringBuffer buf = new StringBuffer();

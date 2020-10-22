@@ -1,6 +1,6 @@
 package global.sesoc.baseball.vo;
 
-import java.io.Serializable;
+import java.util.List;
 
 /**
  * 선수 정보 VO 클래스들의 상위 클래스
@@ -33,6 +33,18 @@ public class Player {
 	public Player() {
 		
 	}
+	/**
+	 * specific constructor
+	 */
+	public Player(List<Object> playerInfo) {
+		// id, 선수이름, 소속팀, 연봉, War
+		this.id = (String) playerInfo.get(0);
+		this.name = (String) playerInfo.get(1);
+		this.team = (String) playerInfo.get(2);
+		this.salary = (Integer) playerInfo.get(3);
+		this.war = (Double) playerInfo.get(4);
+	}
+	
 	/*
 	 * toString Override
 	 */
