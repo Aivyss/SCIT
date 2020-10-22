@@ -14,8 +14,8 @@ import global.sesoc.baseball.vo.Player;
  * 사용자 인터페이스
  */
 public class BaseballUI {
-	Scanner input = new Scanner(System.in);
-	BaseballManager manager = new BaseballManager();
+	private Scanner input = new Scanner(System.in);
+	private BaseballManager manager = new BaseballManager();
 
 	/**
 	 * 생성자
