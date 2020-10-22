@@ -201,21 +201,14 @@ public class BaseballUI {
 	 * 목록 출력
 	 * @param list
 	 */
-	public void print(List<Player> list) {
-		int index = 0;
-		
+	public void print(List<Player> list) {		
 		if (list == null || list.isEmpty()) {
 			System.out.println("검색 결과가 없습니다.");
 		} else {
-			if (list.isEmpty()) {
-				index = 0;
-			} else {
-				for (Player vo : list) {
-					index++;
-					System.out.println(vo);
-				}
+			for (Player vo : list) {
+				System.out.println(vo);
 			}
-			System.out.println("총 " + index + "건의 검색 결과가 있습니다.");
+			System.out.println("총 " + list.size() + "건의 검색 결과가 있습니다.");
 		}
 	}
 	/**
