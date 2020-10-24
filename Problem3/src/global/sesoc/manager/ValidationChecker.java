@@ -2,7 +2,6 @@ package global.sesoc.manager;
 
 import java.util.List;
 
-import global.sesoc.vo.Toy;
 /**
  * 이 클래스는 벨리데이션을 체크하는 기능을 수행하는 클래스이다.
  * @author Aivyss
@@ -10,8 +9,9 @@ import global.sesoc.vo.Toy;
  */
 public class ValidationChecker {
 	/**
-	 * toyList validation check
-	 * 
+	 * 리스트 객체의 벨리데이션을 체크하는 기능을 수행하는 메소드이다.
+	 * 리스트 객체가 null이거나 size가 0일 경우 false를 return.
+	 * 리스트 객체가 null이 아니면 true를 return.
 	 * @return boolean
 	 */
 	public static boolean listValidation(List list) {
@@ -27,8 +27,9 @@ public class ValidationChecker {
 	}
 
 	/**
-	 * VO validation check
-	 * 
+	 * 객체의 밸리데이션을 체크하는 기능을 수행하는 메소드이다.
+	 * 객체가 null이면 return false.
+	 * 객체가 hull이 아니면 return true.
 	 * @return boolean
 	 */
 	public static boolean voValidation(Object obj) {
