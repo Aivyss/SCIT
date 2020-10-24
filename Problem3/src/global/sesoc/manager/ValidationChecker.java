@@ -11,18 +11,17 @@ public class ValidationChecker {
 	/**
 	 * 리스트 객체의 벨리데이션을 체크하는 기능을 수행하는 메소드이다.
 	 * 리스트 객체가 null이거나 size가 0일 경우 false를 return.
-	 * 리스트 객체가 null이 아니면 true를 return.
+	 * 리스트 객체의 사이즈가 1 이상이면 true를 return.
 	 * @return boolean
 	 */
 	public static boolean listValidation(List list) {
 		boolean flag = false;
-
-		if (list != null) {
-			if (!list.isEmpty()) {
-				flag = true;
+		
+		if (list !=null) {
+			if(!list.isEmpty()) {
+				flag= true;
 			}
 		}
-
 		return flag;
 	}
 
