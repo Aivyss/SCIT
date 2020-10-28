@@ -38,14 +38,14 @@ public class ToyManagerUI {
 					this.searchForPrice();
 				} else if (mNum == 5) {
 					this.groupSearch();
+				} else if( mNum == 6) {
+					this.updateToy();
 				} else if (mNum == 9) {
 					System.out.println("[알림] 프로그램을 종료합니다.");
 					break;
-				} else {
-					System.out.println("[에러] 잘못 입력하셨습니다. 다시 입력하세요.");
 				}
 			} catch (InputMismatchException e) {
-				e = new InputMismatchException("[에러] 잘못 입력하셨습니다. 다시 입력하세요.");
+				e = new InputMismatchException("[에러] 잘못 입력하셨습니다!! 다시 입력하세요.");
 				System.out.println(e.getMessage());
 			}
 		}
@@ -61,6 +61,7 @@ public class ToyManagerUI {
 		System.out.println("3. 장난감 삭제");
 		System.out.println("4. 가격대 검색");
 		System.out.println("5. 장난감 정보 출력");
+		System.out.println("6. 장난감 가격 수정");
 		System.out.println("9. 종료");
 		System.out.println("========================");
 		System.out.print("[ 메뉴 선택 ]");
@@ -226,7 +227,12 @@ public class ToyManagerUI {
 		Toy searchedVO = manager.searchToy(serialNum);
 
 		if (searchedVO != null) {
+			System.out.print("[수정할 가격]");
+			int newPrice = this.inputInteger();
+			searchedVO.setPrice(newPrice);
+			
 			manager.updateToy(searchedVO);
+			System.out.println("[알림] 가격 수정이 완료되었습니다.");
 		} else {
 			System.out.println("[알림] 수정할 정보가 없습니다.");
 		}
@@ -253,18 +259,21 @@ public class ToyManagerUI {
 	 * 출력
 	 */
 	public void printToyInfo(List<Toy> list) {
-		int index = 0;
-
-		if (list != null) {
-			if (!list.isEmpty()) {
-				for (Toy vo : list) {
-					index++;
-					System.out.println(vo);
-				}
-				System.out.println("총 " + index + "개의 제품이 검색되었습니다.");
-			} else {
-				System.out.println("[알림] 검색 결과가 없습니다.");
+		boolean listIsNullOrEmpty = false;
+		
+		if (list == null || list.isEmpty()) {
+			listIsNullOrEmpty = true;
+		}
+		
+		if (!listIsNullOrEmpty) {
+			int index = 0;
+			
+			for (Toy vo : list) {
+				index++;
+				System.out.println(vo);
 			}
+			
+			System.out.println("총 " + index + "개의 제품이 검색되었습니다.");
 		} else {
 			System.out.println("[알림] 검색 결과가 없습니다.");
 		}
@@ -293,8 +302,14 @@ public class ToyManagerUI {
 
 		try {
 			num = input.nextInt();
+<<<<<<< HEAD
 			input.nextLine();
 		} catch (Exception e) {
+=======
+		} catch (InputMismatchException e) {
+			throw e;
+		} finally {
+>>>>>>> 5ed7275cb9fd79f30012e504cc489e3a4bfca112
 			input.nextLine();
 		}
 
