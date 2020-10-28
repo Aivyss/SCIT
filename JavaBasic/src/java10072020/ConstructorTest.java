@@ -10,7 +10,7 @@ public class ConstructorTest {
 		Student std1 = new Student();
 		System.out.println("============================");
 		// specific - specific
-		Student std2 = new Student("이한결", 27, "2011103149");
+		Student std2 = new Student("�씠�븳寃�", 27, "2011103149");
 		
 		// Test 1
 		System.out.println("===========test 1=============");
