@@ -1,3 +1,10 @@
+
+package java10142020;
+
+import java.util.Set;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.HashMap;
 /**
  * 1. Collection
  * 	1.1. Set
@@ -12,13 +19,6 @@
  * .clear()
  * .get(K)
  */
-package java10142020;
-
-import java.util.Set;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.HashMap;
-
 public class HashMapExample {
 
 	public static void main(String[] args) {
