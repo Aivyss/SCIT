@@ -21,7 +21,7 @@ public class ToyManagerUI {
 	/**
 	 * 생성자
 	 */
-	public ToyManagerUI() {
+	public ToyManagerUI(){
 		int mNum = 0;
 
 		while (true) {
@@ -72,9 +72,9 @@ public class ToyManagerUI {
 	 */
 	public void insertToy() throws InputMismatchException {
 		while (true) {
+			
 			this.insertMenu();
 			int toyType = this.inputInteger();
-			
 			if (toyType != 9 && (toyType >= 1 && toyType <= 3)) {
 				Toy toy = this.makeToy(toyType);
 				
@@ -289,14 +289,13 @@ public class ToyManagerUI {
 	 * @return integer type
 	 */
 	public int inputInteger() {
-		int num;
+		int num = 0;
 
 		try {
 			num = input.nextInt();
 			input.nextLine();
-		} catch (InputMismatchException e) {
+		} catch (Exception e) {
 			input.nextLine();
-			throw e;
 		}
 
 		return num;
