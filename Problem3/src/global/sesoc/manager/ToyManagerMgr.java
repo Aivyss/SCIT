@@ -9,10 +9,14 @@ import global.sesoc.vo.GameConsole;
 import global.sesoc.vo.Toy;
 
 public class ToyManagerMgr implements ToyManager {
+<<<<<<< HEAD
+	private List<Toy> toyList; // 각종 Toy 정보를 담을 리스트
+=======
 	/**
 	 * 장난감 객체가 들어가는 리스트.
 	 */
 	private List<Toy> toyList;
+>>>>>>> 5ed7275cb9fd79f30012e504cc489e3a4bfca112
 
 	/**
 	 * Constructor
@@ -25,7 +29,11 @@ public class ToyManagerMgr implements ToyManager {
 	public Toy searchToy(String serialNum) {
 		Toy toy = null;
 
+<<<<<<< HEAD
+		if (toyList != null || !toyList.isEmpty()) {
+=======
 		if (ValidationChecker.listValidation(toyList)) {
+>>>>>>> 5ed7275cb9fd79f30012e504cc489e3a4bfca112
 			for (Toy vo : toyList) {
 				if (serialNum.equals(vo.getSerialNum())) {
 					toy = vo;
@@ -40,6 +48,11 @@ public class ToyManagerMgr implements ToyManager {
 	public boolean insertToy(Toy toy) {
 		boolean flag = true;
 
+<<<<<<< HEAD
+		if (toy != null && this.toyList != null && !this.toyList.isEmpty()) {
+			for (Toy vo : toyList) {
+				if (toy.getSerialNum().equals(vo.getSerialNum())) {
+=======
 		if (!ValidationChecker.voValidation(toy)) {
 			flag = false;
 		} else {
@@ -47,6 +60,7 @@ public class ToyManagerMgr implements ToyManager {
 				Toy searched = this.searchToy(toy.getSerialNum());
 
 				if (ValidationChecker.voValidation(searched)) {
+>>>>>>> 5ed7275cb9fd79f30012e504cc489e3a4bfca112
 					flag = false;
 				}
 			}
@@ -63,11 +77,27 @@ public class ToyManagerMgr implements ToyManager {
 	public boolean deleteToy(String serialNum) {
 		boolean flag = false;
 
+<<<<<<< HEAD
+		if (this.toyList != null || !this.toyList.isEmpty()) {
+			int index = 0;
+
+			for (Toy vo : toyList) {
+				if (serialNum.equals(vo.getSerialNum())) {
+					flag = true;
+					break;
+				}
+				index++;
+			}
+
+			if (flag) {
+				this.toyList.remove(index);
+=======
 		if (ValidationChecker.listValidation(toyList)) {
 			Toy searched = this.searchToy(serialNum);
 			if (ValidationChecker.voValidation(searched)) {
 				flag = true;
 				this.toyList.remove(searched);
+>>>>>>> 5ed7275cb9fd79f30012e504cc489e3a4bfca112
 			}
 		}
 
@@ -79,6 +109,17 @@ public class ToyManagerMgr implements ToyManager {
 		boolean flag = false;
 
 		String serialNum = toy.getSerialNum();
+<<<<<<< HEAD
+		int index = 0;
+
+		for (Toy vo : toyList) {
+			if (serialNum.equals(vo.getSerialNum())) {
+				break;
+			}
+		}
+
+		return false;
+=======
 		if (ValidationChecker.voValidation(toy) && ValidationChecker.listValidation(toyList)) {
 			int index = 0;
 
@@ -94,6 +135,7 @@ public class ToyManagerMgr implements ToyManager {
 		}
 
 		return flag;
+>>>>>>> 5ed7275cb9fd79f30012e504cc489e3a4bfca112
 	}
 
 	@Override
