@@ -302,14 +302,10 @@ public class ToyManagerUI {
 
 		try {
 			num = input.nextInt();
-<<<<<<< HEAD
 			input.nextLine();
-		} catch (Exception e) {
-=======
-		} catch (InputMismatchException e) {
+		}  catch (InputMismatchException e) {
 			throw e;
 		} finally {
->>>>>>> 5ed7275cb9fd79f30012e504cc489e3a4bfca112
 			input.nextLine();
 		}
 
