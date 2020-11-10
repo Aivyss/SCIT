@@ -1,0 +1,5 @@
+[ Mybatis_Person 프로젝트 ]
+
+MybatisSample의 기능 추가 버전
+(입력, 전체 출력, 삭제, 수정, 검색 등)
+
