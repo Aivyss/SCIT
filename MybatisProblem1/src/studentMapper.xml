@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 학생정보 처리 SQL -->
+<mapper namespace="student.dao.StudentMapper">
+
+<!-- 학생 정보 저장 -->
+<insert id="insert" parameterType="StudentVO">
+insert into
+	student(
+		id
+		,name
+		,kor
+		,eng
+		,mat
+	) values (
+		#{id}
+		,#{name}
+		,#{kor}
+		,#{eng}
+		,#{mat}
+	)
+</insert>
+
+
+<!-- 전체 학생 목록 읽기 -->
+<select id="selectAll" resultType="StudentVO">
+select
+	id	as	id,
+	name	as	name,
+	kor	as	kor,
+	eng	as	eng,
+	mat	as	mat
+from
+	student
+</select>
+
+<!-- 학번으로 학생정보 삭제 -->
+<delete id="delete" parameterType="String">
+delete from
+	student
+where
+	id = #{_parameter}
+</delete>
+
+
+<!-- 학생 정보 수정 -->
+<update id="update" parameterType="StudentVO">
+update student
+	set kor = #{kor}
+	,set eng = #{eng}
+	,set mat = #{mat}
+where
+	id = #{id}
+</update>
+
+<!-- 이름으로 학생정보 검색 -->
+<select id="selectName" parameterType="String" resultType="StudentVO">
+
+</select>
+
+</mapper>
