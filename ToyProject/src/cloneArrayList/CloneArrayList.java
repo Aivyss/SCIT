@@ -14,7 +14,14 @@ public class CloneArrayList<T> {
 		this.arry = new Object[this.size];
 	}
 	
-	public boolean add(T t) {
+	/**
+	 * Do not modify this method. 
+	 * And DO NOT add any value to arry(Object[] type) for type safety 
+	 * except for using this method.
+	 * @param t
+	 * @return
+	 */
+	public boolean add(T t) { 
 		Object[] temp = new Object[++this.size];
 		
 		if (size != 0) {
@@ -41,7 +48,7 @@ public class CloneArrayList<T> {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public T get(int index) {
+	public T get(int index) { 
 		
 		return (T) arry[index];
 	}
@@ -54,32 +61,58 @@ public class CloneArrayList<T> {
 	
 	public boolean remove(int index) {
 		Object[] temp = new Object[this.size-1];
+		boolean flag = false;
 		
-		for (int i=index+1; i<this.size; i++) {
-			arry[i-1] = arry[i];
+		if (size !=0) {
+			for (int i=index+1; i<this.size; i++) {
+				arry[i-1] = arry[i];
+			}
+			
+			for (int i=0; i<temp.length; i++) {
+				temp[i] = arry[i];
+			}
+			arry = temp;
+			
+			size--;
+			flag = true;
 		}
 		
-		for (int i=0; i<temp.length; i++) {
-			temp[i] = arry[i];
+		return flag;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public boolean remove(T t) {
+		int index = 0;
+		boolean flag = false;
+		
+		if (size !=0) {
+			for (T element : (T[]) arry) {
+				if (element == t) {
+					break;
+				}
+				
+				index++;
+			}
+			
+			flag = remove(index);
 		}
 		
-		arry = temp;
-		
-		size--;
-		
-		return true;
+		return flag;
 	}
 	
 	public int size() {
+		
 		return this.size;
 	}
 	
 	public boolean isEmpty() {
+		
 		return this.size==0;
 	}
 	
 	@SuppressWarnings("unchecked")
 	public T[] toArray() {
+		
 		return (T[]) this.arry;
 	}
 }
