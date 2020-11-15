@@ -1,6 +1,7 @@
 package student.mgr;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import student.dao.StudentDAO;
 import student.vo.Student;
@@ -21,7 +22,7 @@ public class StudentManager {
 	 * 모든 학생 리스트를 추출하는 메소드
 	 * @return
 	 */
-	public ArrayList<Student> selectAll() {
+	public List<Student> selectAll() {
 		return dao.selectAll();
 	}
 
@@ -49,7 +50,7 @@ public class StudentManager {
 	 * @param name
 	 * @return
 	 */
-	public ArrayList<Student> selectName(String name) {
+	public List<Student> selectName(String name) {
 		return dao.selectName(name);
 	}
 	

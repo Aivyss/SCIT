@@ -1,6 +1,7 @@
 package student.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -12,6 +13,9 @@ import student.vo.Student;
  */
 public class StudentDAO {
 	private SqlSessionFactory factory = MybatisConfig.getSqlSessionFactory(); // 마이바티스 객체
+	int insertCount = 0; // 입력 되었는지 여부를 판단하기 위한 카운터
+	int delCount = 0; // 삭제 되었는지 여부를 판단하기 위한 카운터
+	int updateCount = 0; // 업뎃 되었는지 여부를 판단하기 위한 카운터
 	
 	//학생정보 저장
 	public boolean insert(Student student) {
@@ -21,10 +25,10 @@ public class StudentDAO {
 		try {
 			ss = factory.openSession();
 			StudentMapper mapper = ss.getMapper(StudentMapper.class);
-			mapper.insert(student);
-			ss.commit();
-			
-			flag = true;
+			if (insertCount+1 == mapper.insert(student)) {
+				ss.commit();
+				flag = true;
+			}
 		} catch(Exception e) {
 			e.getStackTrace();
 		} finally {
@@ -35,9 +39,9 @@ public class StudentDAO {
 	}
 
 	//전체 읽기
-	public ArrayList<Student> selectAll() {
+	public List<Student> selectAll() {
 		SqlSession ss = null;
-		ArrayList<Student> list = null;
+		List<Student> list = null;
 		
 		try {
 			ss = factory.openSession();
@@ -60,12 +64,12 @@ public class StudentDAO {
 		try {
 			ss = factory.openSession();
 			StudentMapper mapper = ss.getMapper(StudentMapper.class);
-			mapper.delete(id);
-			ss.commit();
-			
-			flag = true;
+			if (mapper.delete(id) == delCount +1) {
+				ss.commit();
+				flag = true;				
+			}
 		} catch (Exception e) {
-			
+			e.getStackTrace();
 		} finally {
 			if (ss!=null) ss.close();
 		}
@@ -96,9 +100,9 @@ public class StudentDAO {
 	}
 	
 	//이름으로 검색
-	public ArrayList<Student> selectName(String name) {
+	public List<Student> selectName(String name) {
 		SqlSession ss = null;
-		ArrayList<Student> list = null;
+		List<Student> list = null;
 		
 		try {
 			ss = factory.openSession();
