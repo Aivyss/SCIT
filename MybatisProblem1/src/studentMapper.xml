@@ -7,7 +7,7 @@
 <mapper namespace="student.dao.StudentMapper">
 
 <!-- 학생 정보 저장 -->
-<insert id="insert" parameterType="StudentVO">
+<insert id="insert" parameterType="student.vo.Student">
 insert into
 	student(
 		id
@@ -24,17 +24,16 @@ insert into
 	)
 </insert>
 
-
 <!-- 전체 학생 목록 읽기 -->
-<select id="selectAll" resultType="StudentVO">
+<select id="selectAll" resultType="student.vo.Student">
 select
-	id	as	id,
-	name	as	name,
-	kor	as	kor,
-	eng	as	eng,
-	mat	as	mat
+	ID
+	,NAME
+	,KOR
+	,ENG
+	,MAT
 from
-	student
+	STUDENT
 </select>
 
 <!-- 학번으로 학생정보 삭제 -->
@@ -42,23 +41,32 @@ from
 delete from
 	student
 where
-	id = #{_parameter}
+	id = #{id}
 </delete>
 
 
 <!-- 학생 정보 수정 -->
-<update id="update" parameterType="StudentVO">
+<update id="update" parameterType="student.vo.Student">
 update student
 	set kor = #{kor}
-	,set eng = #{eng}
-	,set mat = #{mat}
+	,eng = #{eng}
+	,mat = #{mat}
 where
 	id = #{id}
 </update>
 
 <!-- 이름으로 학생정보 검색 -->
-<select id="selectName" parameterType="String" resultType="StudentVO">
-
+<select id="selectName" parameterType="String" resultType="student.vo.Student">
+select
+	id
+	,name
+	,kor
+	,eng
+	,mat
+from
+	student
+where
+	name = #{name}
 </select>
 
 </mapper>

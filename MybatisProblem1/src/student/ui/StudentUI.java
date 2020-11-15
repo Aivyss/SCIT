@@ -1,11 +1,10 @@
 //사용자 화면
 package student.ui;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
-import student.dao.StudentDAO;
 import student.mgr.StudentManager;
 import student.vo.Student;
 
@@ -40,6 +39,7 @@ public class StudentUI {
 				case 0:
 					System.out.println("프로그램을 종료합니다.");
 					flag = false;
+					break;
 				default:
 					System.out.println("다시 선택하세요.");
 				}
@@ -93,7 +93,7 @@ public class StudentUI {
 
 	// 전체 출력
 	public void output() {
-		ArrayList<Student> list = mgr.selectAll();
+		List<Student> list = mgr.selectAll();
 
 		System.out.println("[ 전체 학생 정보 ]");
 		System.out.println("학번\t이름\t국어\t영어\t수학\t평균");
@@ -121,7 +121,7 @@ public class StudentUI {
 		if (!n) {
 			System.out.println("* 해당되는 학번이 없습니다.");
 		} else {
-			System.out.println("* " + n + "건이 삭제되었습니다.");
+			System.out.println("* " + 1 + "건이 삭제되었습니다.");
 		}
 	}
 
@@ -155,7 +155,7 @@ public class StudentUI {
 
 	// 이름으로 검색
 	public void search() {
-		ArrayList<Student> list;
+		List<Student> list;
 		String name;
 
 		System.out.println("[ 검색 ]");
@@ -169,13 +169,7 @@ public class StudentUI {
 		} else {
 			System.out.println("학번\t이름\t국어\t영어\t수학\t평균");
 			for (int i = 0; i < list.size(); i++) {
-				Student s = list.get(i);
-				System.out.print(s.getId() + "\t");
-				System.out.print(s.getName() + "\t");
-				System.out.print(s.getKor() + "\t");
-				System.out.print(s.getEng() + "\t");
-				System.out.print(s.getMat() + "\t");
-				System.out.println(s.getAvg());
+				System.out.println(list.get(i));
 			}
 		}
 	}

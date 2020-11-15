@@ -1,6 +1,7 @@
 package student.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import student.vo.Student;
 
@@ -9,14 +10,14 @@ import student.vo.Student;
  */
 public interface StudentMapper {
 	//Student 객체 저장
-	public boolean insert(Student student);
+	public int insert(Student student);
 	//전체 읽기
-	public ArrayList<Student> selectAll();
+	public List<Student> selectAll();
 	//삭제
-	public boolean delete(String id);
+	public int delete(String id);
 	//수정
-	public boolean update(Student student);
+	public int update(Student student);
 	//이름으로 검색
-	public ArrayList<Student> selectName(String name);
+	public List<Student> selectName(String name);
 
 }
