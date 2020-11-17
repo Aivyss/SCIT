@@ -1,12 +1,14 @@
+import org.apache.log4j.Logger;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Logger2 logger = new Logger2(Main.class);
-		
+		Logger logger = Logger.getLogger(Main.class);
+		Logger2 logger2 = Logger2.getLogger2(Main.class);
 		Exception e = new Exception();
 		
-		logger.autoLog(false, e, "오류테스트");
+		logger2.fatal("오류테스트2", e);
+		logger2.autoLog(true, e, "오류테스트");
 	}
 
 }

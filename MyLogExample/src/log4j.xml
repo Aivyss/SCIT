@@ -6,7 +6,7 @@
 		class="org.apache.log4j.ConsoleAppender">
 		<param name="Target" value="System.out" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{hh:mm:ss} %5p:%L [%c{5}] %m %n" />
+			<param name="ConversionPattern" value="%d{hh:mm:ss} %5p [%c{5}] %m %n" />
 		</layout>
 	</appender> <!-- 날짜별 로그 파일 생성 -->
 	
@@ -17,7 +17,7 @@
 		<param name="Append" value="true" /> <!-- param name="MaxFileSize" value="100MB"/ --> <!-- param name="MaxBackupIndex" value="2"></param -->
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{hh:mm:ss} %5p:%L [%C{10}] %m %n" />
+			<param name="ConversionPattern" value="%d{hh:mm:ss} %5p [%C{10}] %m %n" />
 		</layout>
 	</appender> <!-- 날짜별 로그 파일 생성 -->
 	
@@ -28,7 +28,7 @@
 		<param name="Append" value="true" /> <!-- param name="MaxFileSize" value="100MB"/ --> <!-- param name="MaxBackupIndex" value="2"></param -->
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{hh:mm:ss} %5p:%L [%C{10}] %m %n" />
+			<param name="ConversionPattern" value="%d{hh:mm:ss} %5p: [%C{10}] %m %n" />
 		</layout>
 	</appender> <!-- 날짜별 로그 파일 생성(에러만) -->
 	
@@ -40,7 +40,7 @@
 		<param name="Append" value="true" /> <!-- param name="MaxFileSize" value="100MB"/ --> <!-- param name="MaxBackupIndex" value="2"></param -->
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{hh:mm:ss} %5p:%L [%C{1}] %m %n" />
+			<param name="ConversionPattern" value="%d{hh:mm:ss} %5p: [%C{1}] %m %n" />
 		</layout>
 	</appender> <!-- 특정 패키지 출력 설정 --> <!-- 우리껀가봄 -->
 	
@@ -51,7 +51,7 @@
 	
 	
 	<logger name="org.springframework">
-		<level value="INFO" />
+		<level value="DEBUG" />
 		<appender-ref ref="springFile" />
 	</logger>
 	
@@ -73,7 +73,7 @@
 	
 	<root>
 		<level value="TRACE" />
-		<appender-ref ref="console" /> <!-- 출력방식 CONSOLE -->
+		<!-- <appender-ref ref="console" /> --> <!-- 출력방식 CONSOLE -->
 		<appender-ref ref="errFile" />
 		<appender-ref ref="rollingFile" />
 	</root>
