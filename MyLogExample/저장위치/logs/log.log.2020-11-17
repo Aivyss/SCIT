@@ -1,0 +1,84 @@
+01:14:59 FATAL:10 [Main] 오류테스트2 
+java.lang.Exception
+	at Main.main(Main.java:8)
+01:14:59 FATAL:44 [Logger2] 오류테스트 
+java.lang.Exception
+	at Main.main(Main.java:8)
+01:19:54 FATAL:10 [Main] 오류테스트2 
+java.lang.Exception
+	at Main.main(Main.java:8)
+01:19:54 FATAL:44 [Logger2] 오류테스트 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:06:52 FATAL:10 [Main] 오류테스트2 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:07:05 FATAL:38 [Logger2] 오류테스트 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:10:26 FATAL:10 [Main] 오류테스트2 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:11:39 FATAL:38 [Logger2] 오류테스트 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:15:02 FATAL:10 [Main] 오류테스트2 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:15:22 FATAL:38 [Logger2] 오류테스트 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:34:38 FATAL:10 [Main] 오류테스트2 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:35:01 FATAL:10 [Main] 오류테스트2 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:35:01 FATAL:39 [Logger2] 오류테스트 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:37:01 FATAL:10 [Main] 오류테스트2 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:37:01 FATAL:39 [Logger2] 오류테스트 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:37:18 FATAL:10 [Main] 오류테스트2 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:37:28 FATAL:10 [Main] 오류테스트2 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:37:28 FATAL:39 [Logger2] 오류테스트 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:39:45 FATAL:10 [Main] 오류테스트2 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:39:45 FATAL:39 [Logger2] 오류테스트 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:40:04 FATAL:10 [Main] 오류테스트2 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:43:50 FATAL:10 [Main] 오류테스트2 
+java.lang.Exception
+	at Main.main(Main.java:8)
+02:45:43 FATAL:11 [Main] 오류테스트2 
+java.lang.Exception
+	at Main.main(Main.java:8)
+04:19:51 FATAL:10 [Main] 오류테스트2 
+java.lang.Exception
+	at Main.main(Main.java:8)
+06:10:12 FATAL [Main] 오류테스트2 
+java.lang.Exception
+	at Main.main(Main.java:8)
+06:10:33 FATAL [Main] 오류테스트2 
+java.lang.Exception
+	at Main.main(Main.java:8)
+06:10:33 FATAL [Logger2] 오류테스트 
+java.lang.Exception
+	at Main.main(Main.java:8)
+06:10:52 FATAL [Main] 오류테스트2 
+java.lang.Exception
+	at Main.main(Main.java:8)
