@@ -13,7 +13,7 @@ public class Logger2 extends Logger {
 	private static Logger2 logger2;
 	private boolean printOnOff;
 	private static String className;
-	String timeFormat = "HH:mm:ss";
+	private String timeFormat = "HH:mm:ss";
 	
 	protected Logger2(String name) {
 		super(name);
@@ -28,7 +28,7 @@ public class Logger2 extends Logger {
 		return logger2;
 	}
 	
-	public void autoLog(boolean printOnOff, Throwable t, Object message) {
+	public void autoLog(boolean printOnOff, Throwable t, Object ...message) {
 		StackTraceElement[] stacks = new Throwable().getStackTrace();
 		StackTraceElement beforeStack = stacks[1];
 		String level = determineLevel(t);
@@ -42,7 +42,7 @@ public class Logger2 extends Logger {
 		}
 	}
 	
-	public void autoLogPrint(String level, Throwable t, Object message) {
+	public void autoLogPrint(String level, Throwable t, Object ...message) {
 		StackTraceElement[] stacks = new Throwable().getStackTrace();
 		StackTraceElement beforeStack = stacks[1];
 		
@@ -51,9 +51,7 @@ public class Logger2 extends Logger {
 	
 	private String determineLevel(Throwable t) {
 		Map<String, String> map = levelTable();
-		
 		String throwablesName = t.getClass().getName().substring(10);
-		
 		String resultLevel = map.get(throwablesName);
 		
 		if(level == null) {
@@ -70,7 +68,10 @@ public class Logger2 extends Logger {
 	
 	private Map<String, String> levelTable() {
 		Map<String, String> map = new HashMap<String, String>();
+		
 		map.put("Exception", "fatal");
+		map.put("NullPointException", "debug");
+		
 		
 		return map;
 	}

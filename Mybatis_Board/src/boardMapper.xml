@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 게시판 처리 SQL -->
+<mapper namespace="board.dao.BoardMapper">
+
+<!-- 글 저장 -->
+<insert id="insertOne" parameterType="board.vo.Board">
+insert into
+	board (
+		boardnum
+		,name
+		,title
+		,content
+		,hits
+	) values (
+		boardseq.nextval
+		,#{name}
+		,#{title}
+		,#{content}
+		,0
+	)
+</insert>
+<!-- 글 목록 -->
+<select id="selectTitles" resultType="board.vo.Board">
+select
+	boardnum
+	,name
+	,title
+from
+	board
+order by
+	boardnum desc
+</select>
+
+<!-- 글 1개 읽기 -->
+<select id="searchNum" parameterType="int" resultType="board.vo.Board">
+select
+	boardnum
+	,name
+	,hits
+	,to_char(indate, 'yyyy-mm-dd')	as	indate
+	,title
+	,content
+from
+	board
+where
+	boardnum = #{int}
+</select>
+
+<!-- 글의 조회수 1증가 -->
+<update id="increaseHits" parameterType="board.vo.Board">
+update Board
+	set hits=(#{hits}+1)
+where
+	boardnum = #{boardnum}
+</update>
+
+<!-- 글 삭제 -->
+<delete id="deleteOne" parameterType="int">
+delete from 
+	board
+where
+	boardnum = #{int}
+</delete>
+
+<!-- 글 검색 -->
+<select id="searchTitle" parameterType="String" resultType="board.vo.Board">
+select
+	boardnum
+	,name
+	,title
+from
+	board
+where
+	upper(title) like '%'||upper(#{String})||'%'
+order by
+	indate asc
+</select>
+
+</mapper>
