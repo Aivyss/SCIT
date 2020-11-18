@@ -1,14 +1,19 @@
+import java.util.InputMismatchException;
+
 import org.apache.log4j.Logger;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Logger logger = Logger.getLogger(Main.class);
-		Logger2 logger2 = Logger2.getLogger2(Main.class);
-		Exception e = new Exception();
+		Logger2 logger = Logger2.getLogger2(Main.class);
 		
-		logger2.fatal("오류테스트2", e);
-		logger2.autoLog(true, e, "오류테스트");
+		try {
+			InputMismatchException ie = new InputMismatchException();
+			logger.log(false, "info", ie, "테스트1", "테스트2");
+			throw ie;
+		} catch (Exception e) {
+			logger.log(false, e, "테스트3", "테스트4");
+		}
 	}
 
 }
