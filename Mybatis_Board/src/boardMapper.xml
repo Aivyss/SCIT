@@ -41,7 +41,7 @@ select
 	boardnum
 	,name
 	,hits
-	,to_char(indate, 'yyyy-mm-dd')	as	indate
+	,to_char(indate, 'yyyy/MM/dd')	as	indate
 	,title
 	,content
 from
@@ -67,15 +67,24 @@ where
 </delete>
 
 <!-- 글 검색 -->
-<select id="searchTitle" parameterType="String" resultType="board.vo.Board">
+<select id="searchTitle" parameterType="hashmap" resultType="board.vo.Board">
 select
 	boardnum
 	,name
 	,title
 from
 	board
-where
-	upper(title) like '%'||upper(#{String})||'%'
+<where> <!-- 동적쿼리쨩 --> <!-- <where> 태그 아무것도 없으면 실행 ㄴㄴ -->
+	<if test= "s == 1">
+		upper(title) like '%'||upper(#{w})||'%'
+	</if>
+	<if test= "s == 2">
+		upper(name) like '%'||upper(#{w})||'%'
+	</if>
+	<if test= "s == 3">
+		upper(content) like '%'||upper(#{w})||'%'
+	</if>
+</where>
 order by
 	indate asc
 </select>

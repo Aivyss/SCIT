@@ -2,6 +2,7 @@ package board.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -70,9 +71,8 @@ public class BoardDAO {
 			if (vo !=null) {
 				mapp.increaseHits(vo);
 				ss.commit();
+				vo.setHits(vo.getHits()+1);
 			}
-			
-			vo.setHits(vo.getHits()+1);
 		} catch (Exception e) {
 			e.getStackTrace();
 		} finally {
@@ -110,7 +110,7 @@ public class BoardDAO {
 	
 	
 
-	public List<Board> searchBoard(String word) {
+	public List<Board> searchBoard(Map<String, Object> param) {
 		SqlSession ss = null;
 		List<Board> list = null;
 		
@@ -118,7 +118,7 @@ public class BoardDAO {
 			ss = factory.openSession();
 			BoardMapper mapper = ss.getMapper(BoardMapper.class);
 			
-			list = mapper.searchTitle(word);
+			list = mapper.searchTitle(param);
 		} catch (Exception e) {
 			e.getStackTrace();
 		} finally {

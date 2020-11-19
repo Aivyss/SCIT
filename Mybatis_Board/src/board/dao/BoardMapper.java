@@ -2,6 +2,7 @@ package board.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import board.vo.Board;
 
@@ -20,5 +21,5 @@ public interface BoardMapper {
 	//글 삭제
 	public boolean deleteOne(int boardNum);
 	//글 검색	
-	public List<Board> searchTitle(String title);
+	public List<Board> searchTitle(Map<String, Object> param);
 }

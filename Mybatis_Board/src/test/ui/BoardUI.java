@@ -140,10 +140,12 @@ public class BoardUI {
 	 * 검색
 	 */
 	void search() {
-		System.out.print("제목을 입력해주세요 > ");
+		System.out.print("검색항목을 선택해주세요(1. 제목 2. 작성자 3. 내용) > ");
+		int selector = inputInteger();
+		System.out.println("검색어 입력>");
 		String word = sc.nextLine();
 		
-		List<Board> list = mgr.searchBoard(word);
+		List<Board> list = mgr.searchBoard(selector, word);
 		
 		if(list != null) {
 			for (Board b : list) {
