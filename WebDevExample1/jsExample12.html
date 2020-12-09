@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script type="text/javascript">
+            function formCheck() {
+                var food = document.getElementsByName("food");
+                var drink = document.getElementsByName("drink");
+                var movie = document.getElementsByName("movie");
+
+                var foodcheck = checkBoxValidation(food, 2, '야식');
+                if (!foodcheck) return false;
+                var drinkcheck = checkBoxValidation(drink, 3, '음료');
+                if (!drinkcheck) return false;
+
+                // 영화 1개를 선택했는지 그리고 그 선택한 영화가 맞는지
+                // 명칭을 확인창으로 확인할 수 있도록 해준다.
+                var movieFlag = false;
+                var movieName = "";
+                for (var i=0; i<movie.length; i++) {
+                    if (movie[i].checked) {
+                        movieFlag = true;
+                        movieName = movie[i].value;
+                        break;
+                    }
+                }
+                if (movieFlag) {
+                    var ck = confirm("선택한 영화가" + movieName + "이 맞습니까?");
+                    if (!ck) {
+                        return false;
+                    } 
+                } else {
+                    alert("영화를 선택해주세요.");
+                    return false;
+                }
+
+                // 이메일 체크
+                if (email == 0){
+                    alert("이메일을 선택하세요");
+                    return false;
+                }
+
+         
+                            
+                alert("완료되었어요.");
+                return false;
+            }
+
+            function checkBoxValidation (array, num, str) {
+                var count = 0;
+
+                for (var i=0; i<array.length; i++) {
+                    if (array[i].checked) {
+                        count++;
+                    }
+                }
+                
+                if (count < num) {
+                    alert ("좋아하는" + str + "은" + num + "개 이상 선택하세요");
+                    return false;
+                }
+
+                return true;
+            }
+
+            function changeEmail() {
+                var test = document.getElementById("email");
+                var email = document.getElementById("email").selectedIndex;
+                var emailTextTag = document.getElementById("emailText");
+                
+                switch (email) {
+                    case 0:
+                        alert("이메일을 선택하세욘");
+                        emailTextTag.value = "";
+                        break;
+                    case 1:
+                        emailTextTag.value = "gmail.com";
+                        break;
+                    case 2:
+                        emailTextTag.value = "naver.com";
+                        break;
+                    case 3:
+                        emailTextTag.value = "hanmail.net";
+                        break;
+                }
+
+            }
+        </script>
+    </head>
+
+    <body>
+        <form onsubmit="return formCheck()">
+            <div>
+                <p> 당신이 좋아하는 야식 </p>
+                <input type="checkbox" name="food">족발
+                <input type="checkbox" name="food">피자
+                <input type="checkbox" name="food">치킨
+                <input type="checkbox" name="food">삼겹살
+            </div>
+
+            <div>
+                <p>당신이 좋아하는 음료는?</p> 
+                <input type="checkbox" name="drink" onchange="">소주
+                <input type="checkbox" name="drink">맥주
+                <input type="checkbox" name="drink">청주
+                <input type="checkbox" name="drink">음료수
+            </div>
+
+            <div> <!-- 이름을 지정해야 하나만 고를 수 있음-->
+                <p> 가장 좋아하는 영화장르를 고르시오</p>
+                <input type="radio" name="movie" value="멜로"> 멜로
+                <input type="radio" name="movie" value="SF"> SF
+                <input type="radio" name="movie" value="호러"> 호러
+                <input type="radio" name="movie" value="액션"> 액션
+            </div>
+
+            <div>
+                <input type="text" id="emailText" size=20>
+                <select id="email" onchange="changeEmail()">
+                    <p>이메일을 선택하시오</p>
+                    <option selected value=0>-선택하세요-</option>
+                    <option value=1>google</option>
+                    <option value=2>naver</option>
+                    <option value=3>daum</option>
+                </select>
+            </div>
+
+            <input type="submit" value="전송">
+        </form>
+    </body>
+</html>

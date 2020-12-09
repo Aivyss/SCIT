@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var color = ["white", "yellow"];	
+	var i = 0;	
+	var interval = 100;
+
+ 	var intervalId = setInterval(changeColor(), interval);
+	setTimeout(function(){clearInterval(intervalId)}, interval*100+1);
+	
+	function changeColor(){
+		if (i == 1) {
+			i = 0;
+		} else {
+			i = 1;
+		}
+		
+		var bodyTag = document.getElementById("theBody");
+		bodyTag.style.backgroundColor = color[i];
+	}
+</script>
+</head>
+
+<body id="theBody">
+</body>
+
+</html>
