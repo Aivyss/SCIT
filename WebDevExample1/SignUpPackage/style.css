@@ -14,11 +14,23 @@
     font-weight: bold;
 }
 
-td{
+.divider {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+td {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 10px;
     border: 1px solid black;
     width: 70%;
 }
 
 tr {
     width: 200px;
+}
+
+table {
+    border-spacing: 0px;
 }

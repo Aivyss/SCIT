@@ -8,11 +8,11 @@
     <script src="js.js"></script>
 </head>
 <body>
-    <form name = "SignUpForm">
+    <form name = "SignUpForm" onsubmit="return formCheck()">
         <table id="SignUpTable">
             <tr> <!-- 이름 입력 칸-->
                 <td class="head">고객님의 이름<span class="req">(*)</span></td>
-                <td><input type="text" name="name" size=30></td>
+                <td><input type="text" id="name" size=30></td>
             </tr>   
 
             <tr> <!-- 아이디 입력 칸-->
@@ -25,12 +25,12 @@
 
             <tr> <!-- 비밀번호 입력 칸-->
                 <td class="head">비밀번호 입력<span class="req">(*)</span></td>
-                <td><input type="password" name="pw" size=30></td>
+                <td><input type="password" id="pw" size=30></td>
             </tr>
 
             <tr> <!-- 비밀번호 다시 입력 칸-->
                 <td class="head">비밀번호 다시 입력<span class="req">(*)</span></td>
-                <td><input type="password" name="confirmpw" size=30></td>
+                <td><input type="password" id="confirmPw" size=30></td>
             </tr>
 
             <tr> <!-- 이메일 입력 칸-->
@@ -52,32 +52,32 @@
             <tr> <!-- 주소 입력 칸-->
                 <td class="head">주소<span class="req">(*)</span></td>
                 <td id="postNum">
-                    <input type="text" name="postNum" size=5> - 
-                    <input type="text" name="postNum" size=5>
-                    <button class="searchPostNum" onclick="openAddressBook();">우편번호 검색</button> 
-
-                    <br>
-
-                    <input type="text" name="address" size=35>
-
-                    <br>
-
-                    나머지주소<input type="text" name="address" size=23>
+                    <p class="divider">
+                        <input type="text" name="address" size=5> - 
+                        <input type="text" name="address" size=5>
+                        <button class="searchPostNum" onclick="openAddressBook();">우편번호 검색</button> 
+                    </p>
+                    <p class="divider">
+                        <input type="text" name="address" size=35>
+                    </p>
+                    <p class="divider">
+                        나머지주소<input type="text" name="address" size=23>
+                    </p>
                 </td>
             </tr>
 
             <tr><!-- 휴대폰번호 입력 칸-->
                 <td class="head">휴대폰 번호<span class="req">(*)</span></td>
                 <td>
-                    <select name="firstPhone">
+                    <select name="mobileNum">
                         <option selected value="0">선택</option>
                         <option value="010">010</option>
                         <option value="011">011</option>
                         <option value="017">017</option>
                         <option value="019">019</option>
                     </select>
-                    -<input type="text" size=5 name="mobileNum">
-                    -<input type="text" size=5 name="mobileNum">
+                     - <input type="text" size=5 name="mobileNum">
+                     - <input type="text" size=5 name="mobileNum">
                     <input type="radio" name="mobileCarrier" value="SKT">SKT
                     <input type="radio" name="mobileCarrier" value="KT">KT
                     <input type="radio" name="mobileCarrier" value="LGT">LGT
@@ -87,8 +87,8 @@
             <tr> <!-- 집, 직장 전화번호 입력 칸-->
                 <td class="head">집 전화번호</td>
                 <td>
-                    <input type="text" name="phoneNumber" size=5>-
-                    <input type="text" name="phoneNumber" size=5>-
+                    <input type="text" name="phoneNumber" size=5> - 
+                    <input type="text" name="phoneNumber" size=5> - 
                     <input type="text" name="phoneNumber" size=5>
                     <input type="radio" name="position" value="home">집
                     <input type="radio" name="position" value="jobPlace">직장
@@ -106,6 +106,8 @@
                 </td>
             </tr>
         </table>
+
+        <input type="submit" value="회원가입">
     </form>
 </body>
 </html>
