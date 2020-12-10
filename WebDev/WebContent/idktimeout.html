@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		
+		<script type="text/javascript">
+			var count = 0;
+			var interval = 1000;
+
+			function start() {
+				var intervalId = setInterval(counter, interval);
+				setTimeout(function(){clearInterval(intervalId)}, interval*10+1);
+				
+			}
+			function counter() {		
+				document.write(count);
+
+				if (count == 1){
+					count = 0;
+				} else {
+					count++;
+				}			
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="버튼" onclick="start()">
+	</body>
+</html>

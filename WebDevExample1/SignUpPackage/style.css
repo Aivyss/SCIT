@@ -1,0 +1,36 @@
+.SignUpTable {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.head {
+    border: 1px solid black;
+    background-color: #F6F6F6;
+    width: 30%;
+}
+
+.req {
+    color: red;
+    font-weight: bold;
+}
+
+.divider {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+td {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 10px;
+    border: 1px solid black;
+    width: 70%;
+}
+
+tr {
+    width: 200px;
+}
+
+table {
+    border-spacing: 0px;
+}
