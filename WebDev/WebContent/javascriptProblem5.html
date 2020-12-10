@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Make a Table</title>
+	</head>
+	
+	<body>
+		<h1>Make a Table</h1>
+		
+		<script type="text/javascript">
+			var num = 1
+			
+			document.write('<table border="1">')
+			for (var i=0; i<5; i++){
+				document.write("<tr>")
+				
+				for (var j=0; j<5; j++){
+					document.write("<td>")
+					document.write(num++)
+					document.write("</td>")
+				}
+				
+				document.write("<tr>")
+			}
+			document.write("</table>")
+		</script>
+	
+	</body>
+</html>

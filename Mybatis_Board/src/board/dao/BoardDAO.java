@@ -72,7 +72,7 @@ public class BoardDAO {
 				mapp.increaseHits(vo);
 				ss.commit();
 				vo.setHits(vo.getHits()+1);
-			}
+			c
 		} catch (Exception e) {
 			e.getStackTrace();
 		} finally {

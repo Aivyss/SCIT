@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Image slice
+        </title>
+        <style type="text/css">
+            #photo {
+                width:300px;
+                height:300px;
+            }
+            /*#photo -> photo라는 id의 디자인을 결정*/
+        </style>
+
+        <script type="text/javascript">
+            var num = 1;
+
+            function gallery(direct) {
+                if(direct) {
+                    if (num==8){
+                        return;
+                    }
+
+                    num++;
+                } else {
+                    if (num == 1) {
+                        return;
+                    }
+
+                    num--;
+                }
+
+                var imgTag = document.getElementById("photo");
+                imgTag.setAttribute("src", "../images/pic_" + num + ".jpg");
+            }
+        </script>
+    </head>
+    
+    <body>
+        <div id="galleryZone">
+            <p>
+                <!-- .. 부모폴더, . 내폴더-->
+                <img alt="" src="../images/pic_1.jpg" id="photo">
+            </p>
+            <p>
+                <input type="button" onclick="gallery(0);" value="이전">
+                <input type="button" onclick="gallery(1);" value="다음">
+            </p>
+        </div>
+    </body>
+</html>

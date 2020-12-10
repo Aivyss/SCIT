@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 도서 정보 처리 SQL -->
+<mapper namespace="book.dao.BookMapper">
+
+<!-- 도서 정보 저장 -->
+<insert id="insertBook" parameterType="BookVO">
+insert into
+	book(
+		bnum
+		,title
+		,author
+		,publisher
+		,price
+	) values (
+		bookseq.nextval
+		,#{title}
+		,#{author}
+		,#{publisher}
+		,#{price}
+	)
+</insert>
+
+<!-- 전체 도서 목록 읽기 -->
+<select id="listAll" resultType="BookVO">
+select
+	bnum
+	,title
+	,author
+	,publisher
+	,price
+	,to_char(inputdate, 'yy/mm/dd')	as inputdate
+from
+	book
+order by
+	bnum asc
+</select>
+
+<!-- 번호로 삭제하기 -->
+<delete id="deleteBook" parameterType="int">
+delete from 
+	book
+where
+	bnum = #{int}
+</delete>
+
+<!-- 번호로 제목, 저자, 출판사, 가격 수정하기 -->
+<update id="updateBook" parameterType="BookVO">
+update book
+	set title = #{title}
+	,author = #{author}
+	,publisher = #{publisher}
+	,price = #{price}
+where
+	bnum = #{bnum}
+</update>
+
+<!-- 번호로 도서정보 찾기 -->
+<select id="getBook" parameterType="int" resultType="BookVO">
+select
+	bnum
+	,title
+	,author
+	,publisher
+	,price
+	,to_char(inputdate, 'yy/mm/dd')	as inputdate
+from
+	book
+where
+	bnum = #{bnum}
+</select>
+
+<!-- 검색하기 -->
+<select id="searchBook" parameterType="String" resultType="BookVO">
+select
+	bnum
+	,title
+	,author
+	,publisher
+	,price
+	,to_char(inputdate, 'yy/mm/dd')	as inputdate
+from
+	book
+where
+	upper(title) like '%'||upper(#{String})||'%'
+order by
+	title desc
+</select>
+
+<!-- 출판사별 검색 -->
+<select id="searchPublisher" resultType="BookVO">
+select
+    publisher
+    ,min(price)	as price
+from
+    book
+group by 
+    publisher
+having
+    count(*)>=3
+order by
+	publisher asc
+</select>
+
+</mapper>

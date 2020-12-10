@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Create Object</title>
+		<script type="text/javascript">
+			// 즉석 객체생성
+			var tv = new Object();
+			
+			tv.color = "white"; // property가 없다면 만들면서 값을 넣기 까지 함
+			tv.price = 300000000;
+			
+			tv.info = function(){
+				document.write("tv색상: ", this.color, "<br>");
+				document.write("tv가격: ", this.price, "<br>");
+			};
+			
+			// 즉석객체 생성2
+			var car = {
+					  color : "Blue"
+					, price : 1000000000
+					, info : function(){
+						document.write("car색상: ", this.color, "<br>");
+						document.write("car가격: ", this.price, "<br>");
+					}
+			};
+			
+			document.write("<h1>tv 객체 메서드 호출</h1>")
+			tv.info();
+			document.write("<h1>car 객체 메서드 호출</h1>")
+			car.info();
+		</script>
+	</head>
+	
+	<body>
+	
+	</body>
+</html>

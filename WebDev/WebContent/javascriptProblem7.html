@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Date Object</title>
+		<script type="text/javascript">
+			var today = new Date();
+			
+			document.write("<h1>" , "오늘 날짜정보", "</h1>")
+			document.write("년: ", today.getFullYear(), "<br>")
+			document.write("월: ", today.getMonth()+1, "<br>")
+			document.write("일: ", today.getDate(), "<br>")
+			
+			var nowDay
+			switch(today.getDay()){
+				case 1:
+					nowDay = "월";
+					break;
+				case 2:
+					nowDay = "화";
+					break;
+				case 3:
+					nowDay = "수";
+					break;
+				case 4:
+					nowDay = "목";
+					break;
+				case 5:
+					nowDay = "금";
+					break;
+				case 6:
+					nowDay = "토";
+					break;
+				case 0:
+					nowDay = "일";				
+					break;
+			}
+			
+			document.write("요일:", nowDay, "<br>")
+			
+			
+			document.write("<h1>", "디데이 계산", "</h1>");
+			var jobFairDay = new Date("2021/5/3");
+			var diffDay = jobFairDay - today;
+			
+			console.log(diffDay);
+			
+			var result = Math.round(diffDay / (1000*60*60*24));
+			document.write("JobFair까지 나음 일자: ", result, "일입니다.")
+		</script>
+	</head>
+	
+	<body>
+	
+	</body>
+</html>

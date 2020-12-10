@@ -8,7 +8,7 @@
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d{yyyy/MM/dd HH:mm:ss} %-5p [%c{5}] %m %n" />
 		</layout>
-	</appender> <!-- 날짜별 로그 파일 생성 -->
+	</appender> <!-- 콘솔출력에 대한 형태조정 -->
 	
 	
 	<appender name="rollingFile"
@@ -17,9 +17,9 @@
 		<param name="Append" value="true" /> <!-- param name="MaxFileSize" value="100MB"/ --> <!-- param name="MaxBackupIndex" value="2"></param -->
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{yyyy/MM/dd HH:mm:ss} %-5p %m %n" />
+			<param name="ConversionPattern" value="%d{yyyy/MM/dd HH:mm:ss} [%-5p] %m %n" />
 		</layout>
-	</appender> <!-- 날짜별 로그 파일 생성 -->
+	</appender> <!-- 날짜별 rollingFile로그 파일 생성 -->
 	
 	
 	<appender name="springFile"
@@ -28,9 +28,9 @@
 		<param name="Append" value="true" /> <!-- param name="MaxFileSize" value="100MB"/ --> <!-- param name="MaxBackupIndex" value="2"></param -->
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{yyyy/MM/dd HH:mm:ss} %-5p: %m %n" />
+			<param name="ConversionPattern" value="%d{yyyy/MM/dd HH:mm:ss} [%-5p] %m %n" />
 		</layout>
-	</appender> <!-- 날짜별 로그 파일 생성(에러만) -->
+	</appender> <!-- 날짜별 springFile로그 파일 생성 -->
 	
 	
 	<appender name="errFile"
@@ -40,9 +40,9 @@
 		<param name="Append" value="true" /> <!-- param name="MaxFileSize" value="100MB"/ --> <!-- param name="MaxBackupIndex" value="2"></param -->
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p: %m %n" />
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%-5p] %m %n" />
 		</layout>
-	</appender> <!-- 특정 패키지 출력 설정 --> <!-- 우리껀가봄 -->
+	</appender> <!-- 특정 패키지 출력 설정 -->
 	
 	
 	<logger name="org.apache.ibatis">

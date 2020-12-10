@@ -11,7 +11,7 @@ public class Logger2 extends Logger {
 	private static Logger2 logger2;
 	private static String className;
 	private String timeFormat = "yyyy/MM/dd HH:mm:ss";
-	Map<String, String> map = new HashMap<String, String>();
+	private Map<String, String> map = new HashMap<String, String>();
 	
 	protected Logger2(String name) {
 		super(name);
@@ -32,7 +32,6 @@ public class Logger2 extends Logger {
 		StackTraceElement[] stacks = new Throwable().getStackTrace();
 		StackTraceElement beforeStack = stacks[1];
 		int line = beforeStack.getLineNumber();
-		className = beforeStack.getFileName();
 		String methodName = beforeStack.getMethodName();
 		String comment = "";
 		String level = determineLevel(t);
@@ -45,18 +44,18 @@ public class Logger2 extends Logger {
  
 		if (printOnOff) {
 			String log = "[" +getCurrentTime() + "]" 
-					+ "[" + level + "]" 
-					+ "[Class-method name: " + className + "-" + methodName + "]"
-					+ "[line: " + line + "]"
-					+ "::" 
+					+ "[" + level + "] " 
+					+ "[Class-method name: " + className + "-" + methodName + "] "
+					+ "[line: " + line + "] "
+					+ ":: " 
 					+ "[" + throwablesName + "-" + t.getStackTrace()[0].getLineNumber()+"]"
 					+ "__" + comment;
 			
 			System.out.println(log);
 		} else {
-			comment = "[Class-method name: " + className + "-" + methodName + "]"
-					+ "[line: " + line + "]"
-					+ "::" 
+			comment = "[Class-method name: " + className + "-" + methodName + "] "
+					+ "[line: " + line + "] "
+					+ ":: " 
 					+ "[" + throwablesName + "-" + t.getStackTrace()[0].getLineNumber()+"]"
 					+ comment;
 			
@@ -68,7 +67,6 @@ public class Logger2 extends Logger {
 		StackTraceElement[] stacks = new Throwable().getStackTrace();
 		StackTraceElement beforeStack = stacks[1];
 		int line = beforeStack.getLineNumber();
-		className = beforeStack.getFileName();
 		String methodName = beforeStack.getMethodName();
 		String comment = "";
 		String throwablesName = getThrowableName(t);
@@ -79,11 +77,11 @@ public class Logger2 extends Logger {
 		comment = comment.substring(2); // 맨앞의 "__" 제거
  
 		if (printOnOff) {
-			String log = "[" +getCurrentTime() + "]" 
-					+ "[" + level.toUpperCase() + "]" 
-					+ "[Class-method name: " + className + "-" + methodName + "]"
-					+ "[line: " + line + "]"
-					+ "::" 
+			String log = "[" +getCurrentTime() + "] " 
+					+ "[" + level.toUpperCase() + "] " 
+					+ "[Class-method name: " + className + "-" + methodName + "] "
+					+ "[line: " + line + "] "
+					+ ":: " 
 					+ "[" + throwablesName + "-" + t.getStackTrace()[0].getLineNumber()+"]"
 					+ "__" + comment;
 			
@@ -112,18 +110,18 @@ public class Logger2 extends Logger {
 		comment = comment.substring(2); // 맨앞의 "__" 제거
 		
 		if (printOnOff) {
-			String log = "[" +getCurrentTime() + "]" 
-						+ "[" + level.toUpperCase() + "]" 
-						+ "[Class-method name: " + className + "-" + methodName + "]"
-						+ "[line: " + line + "]" 
-						+ "::" 
+			String log = "[" +getCurrentTime() + "] " 
+						+ "[" + level.toUpperCase() + "] " 
+						+ "[Class-method name: " + className + "-" + methodName + "] "
+						+ "[line: " + line + "] " 
+						+ ":: " 
 						+ comment;
 			
 			System.out.println(log);
 		} else {
-			comment = "[Class name: " + className + "-" + methodName + "]" 
-					+ "[line: " + line + "]" 
-					+ "::" 
+			comment = "[Class name: " + className + "-" + methodName + "] " 
+					+ "[line: " + line + "] " 
+					+ ":: " 
 					+ comment;
 			
 			logging(level, comment);
@@ -132,13 +130,13 @@ public class Logger2 extends Logger {
 	
 	private String determineLevel(Throwable t) { // 작성완료
 		String throwablesName = getThrowableName(t);
-		String resultLevel = map.get(throwablesName).toUpperCase();
+		String resultLevel = map.get(throwablesName);
 		
-		if(level == null) {
+		if(resultLevel == null) {
 			resultLevel = "FATAL";
 		}
 		
-		return resultLevel;
+		return resultLevel.toUpperCase();
 	}
 	
 	private String getThrowableName(Throwable t) {
@@ -190,7 +188,7 @@ public class Logger2 extends Logger {
 		map.put("SystemException", fatal);
 		map.put("ClassNotFoundException", warn);
 		map.put("ClassCastExcetion", warn);
-		map.put("NullPointException", debug);
+		map.put("NullPointerException", debug);
 		map.put("ArrayIndexOutOfBoundsException", debug);
 		map.put("IOException", debug);
 		map.put("IndexOutOfBoundException", debug);

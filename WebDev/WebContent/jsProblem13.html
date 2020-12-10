@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+        <script type="text/javascript">
+            function formCheck() {
+                // 값 받아옴
+                var id = document.getElementById("id").value;
+                var pw = document.getElementById("pw").value;
+                var cpw = document.getElementById("confirmpw").value;
+                var food = document.getElementsByName("food");
+
+                // 제약조건
+                var checkIdLength = (id.length>= 4 && id.length <=10);
+                var checkPwLength1 = (pw!=null && pw.length !=0);
+                var checkPwLength2 = (pw.length >=5 && pw.length<=12);
+
+                // id는 4~10글자 내외
+                if(!checkIdLength) {
+                    alert("ID를 4~10글자 사이로 입력하세염.");
+                    return false;
+                }
+
+                // pw는 5~12글자이어야 한다. pw는 반드시 입력되어야 함?
+                if (!checkPwLength1) {
+                    alert("PW는 반드시 입력해주세요.");
+                    return false;
+                } else if (!checkPwLength2) {
+                    alert("5~12사이로 입력하세용");
+                    return false;
+                }
+
+                if (pw != cpw) {
+                    alert("두 비밀번호가 일치하지않아용.");
+                    return false;
+                }
+
+                // check가 한개도 없을시 요구.
+                var count = 0;
+                for (var i=0; i<food.length; i++) {
+                    if (food[i].checked) {
+                        count++;
+                        break;
+                    }
+                }
+                if (count ==0){
+                    alert("하나라도 체크해야됩니땅");
+                    return false;
+                }
+
+                //완료~
+                alert("요시요시 끝났어요");
+                return false;
+            }
+		</script>
+	</head>
+	
+	<body>
+        <form action="Path" onsubmit="return formCheck();">
+            ID : <input type="text" id="id" value="guest"> <br>
+            PW : <input type="password" id="pw"> <br>
+            Confirm PW: <input type="password" id="confirmpw">
+            <input type="submit" value="전송"> <br><br>
+
+            1번째 그룹 (좋아하는 야식쨩) <br>
+            치킨 <input type="checkbox" name="food"> 피자 <input type="checkbox" name="food">
+            족발 <input type="checkbox" name="food"> 보쌈 <input type="checkbox" name="food"> <br>
+            2번째 그룹 (좋아하는 음료쿤) <br>
+            아아 <input type="checkbox" name="drink"> 모카 <input type="checkbox" name="drink">
+            라떼 <input type="checkbox" name="drink"> 에스프레소 <input type="checkbox" name="drink"> <br>
+
+
+        </form>
+
+	</body>
+</html>
