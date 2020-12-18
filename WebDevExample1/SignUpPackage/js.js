@@ -1,13 +1,13 @@
 function formCheck() {
     // 유효값 검사를 실행해야하는 목록
-    var name = document.getElementById("name").value;
-    var id = document.getElementById("id").value;
-    var pw = document.getElementById("pw").value;
-    var cpw = document.getElementById("confirmPw").value;
-    var email = document.getElementsByName("email"); // 배열
-    var address = document.getElementsByName("address"); // 배열
-    var mobileNum = document.getElementsByName("mobileNum") // 배열
-    var mobileCarrier = document.getElementsByName("mobileCarrier") // 배열
+    const name = document.getElementById("name").value;
+    const id = document.getElementById("id").value;
+    const pw = document.getElementById("pw").value;
+    const cpw = document.getElementById("confirmPw").value;
+    const email = document.getElementsByName("email"); // 배열
+    const address = document.getElementsByName("address"); // 배열
+    const mobileNum = document.getElementsByName("mobileNum") // 배열
+    const mobileCarrier = document.getElementsByName("mobileCarrier") // 배열
 
     var flag = true;
 
@@ -100,7 +100,7 @@ function formCheck() {
             alert("휴대폰번호를 입력하세요.");
             flag = false;
         } else if(!numCheck) {
-            alert("숫자만 입력하세요.");
+            alert("휴대폰 번호는 숫자만 입력하세요.");
             flag = false;    
         } else {
             var checked = false;
@@ -122,7 +122,7 @@ function formCheck() {
     return flag;
 }
 function giveAddress (form) {
-    var address = form.emailDomain.selectedIndex;
+    const address = form.emailDomain.selectedIndex;
 
     switch (address) {
         case 0:
@@ -146,8 +146,8 @@ function giveAddress (form) {
 }
 
 function fixCheonrian (form) {
-    var checkObj = document.getElementById("cheonrian");
-    var check = checkObj.checked;
+    const checkObj = document.getElementById("cheonrian");
+    const check = checkObj.checked;
 
     if (check) {
         form.email[1].value = "chollian.net";
@@ -157,8 +157,8 @@ function fixCheonrian (form) {
 }
 
 function duplicateCheckId() {
-    var testSetId = ['test1', 'test2', 'test3']; // 서버가 없어서 임시로 만듦
-    var id = document.getElementById("id").value;
+    const testSetId = ['test1', 'test2', 'test3']; // 서버가 없어서 임시로 만듦
+    const id = document.getElementById("id").value;
     var flag = isEmptyId("id");
 
     if (flag){
@@ -191,13 +191,17 @@ function openAddressBook() {
 }
 
 function isEmptyName(name){
-    var data = document.getElementsByName(name);
+    const data = document.getElementsByName(name);
     var flag = false;
 
-    for (var i=0; i<data.length; i++) {
-        if (data[i].value == "") {
-            flag = true;
-            break;
+    if (data == null || data == undefined){
+        flag = true;
+    } else {
+        for (var i=0; i<data.length; i++) {
+            if (data[i].value == "") {
+                flag = true;
+                break;
+            }
         }
     }
 
@@ -205,10 +209,10 @@ function isEmptyName(name){
 }
 
 function isEmptyId(id){
-    var data = document.getElementById(id).value;
+    const data = document.getElementById(id).value;
     var flag = false;
 
-    if (data == "") {
+    if (data == "" || data == null || data == undefined) {
         flag = true;
     }
 

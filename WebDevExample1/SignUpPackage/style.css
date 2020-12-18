@@ -1,12 +1,14 @@
 .SignUpTable {
     width: 100%;
     border: 1px solid black;
+    border-spacing: 0px;
+    border-collapse: collapse;
 }
 
 .head {
     border: 1px solid black;
     background-color: #F6F6F6;
-    width: 30%;
+    padding: 10px;
 }
 
 .req {
@@ -24,13 +26,23 @@ td {
     padding-bottom: 6px;
     padding-left: 10px;
     border: 1px solid black;
-    width: 70%;
+    padding-right: 50px;
 }
 
-tr {
-    width: 200px;
+.alignBox {
+    text-align: center;
 }
-
-table {
-    border-spacing: 0px;
+.functionBox {
+    display:inline-block;
+}
+.signUp {
+    background-color: #F7FBFE;
+    border-color:#DCE3E7;
+    margin: 20px;
+}
+.annotation {
+    text-align:right;
+}
+.annotationText {
+    display: inline-block;
 }

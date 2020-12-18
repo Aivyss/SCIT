@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입완료창</title>
 </head>
 <body>
-<h1>회원가입 페이지데스</h1>
-
-<a href="login">로그인 페이지로 이동 데스</a>
+	<h1>회원가입을 완료했어용</h1>
+	<a href="/">메인으로 가기</a>
 </body>
 </html>
