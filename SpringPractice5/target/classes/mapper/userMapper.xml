@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 매퍼 인터페이스 -->
+<mapper namespace="com.scmaster.ict.dao.UserMapper">
+
+<!-- SQL 구문들 -->
+<insert id="insertUser" parameterType="UserVo">
+	insert into user_tb(
+			id
+			,pw
+			,name	
+	) values (
+		#{id}
+		,#{pw}
+		,#{name}
+	)
+</insert>
+
+<select id="checkIdDuplicate" parameterType="id">
+	select 
+	    id
+	from 
+	    user_tb
+	where
+	    id = #{id}
+</select>
+
+</mapper>

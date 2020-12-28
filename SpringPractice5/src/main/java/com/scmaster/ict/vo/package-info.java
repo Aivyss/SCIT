@@ -1,0 +1,1 @@
+package com.scmaster.ict.vo;
